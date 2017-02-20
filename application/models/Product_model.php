@@ -113,20 +113,41 @@ class Product_model extends CI_Model {
 
     public function upload()
     {
+        $arrName = array();
         if (!empty($_FILES['image'])) {
-            if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
-                $tmp_name = $_FILES["image"]["tmp_name"];
-                $name = $_FILES["image"]["name"];
-                $name = substr(md5($name), 0, 3) . substr(time(), 0, 3) . '-' . strtolower($name);
+            if(isset($_FILES["image"]['name']) && is_array($_FILES["image"]['name'])){
+                foreach ($_FILES["image"]['name'] as $key=>$name){
+                    if ($_FILES["image"]["error"][$key] == UPLOAD_ERR_OK) {
+                        $tmp_name = $_FILES["image"]["tmp_name"][$key];
+                        $name = $_FILES["image"]["name"][$key];
+                        $name = substr(md5($name), 0, 3) . substr(time(), 0, 3) . '-' . strtolower($name);
 
-                $path = "uploads/";
+                        $path = "uploads/";
 
-                @mkdir($path, 0777, true);
+                        @mkdir($path, 0777, true);
 
-                if (move_uploaded_file($tmp_name, $path . $name)) {
-                    return $name;
+                        if (move_uploaded_file($tmp_name, $path . $name)) {
+                            $arrName[] = $name;
+                        }
+                    }
+                }
+                return $arrName;
+            }else{
+                if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["image"]["tmp_name"];
+                    $name = $_FILES["image"]["name"];
+                    $name = substr(md5($name), 0, 3) . substr(time(), 0, 3) . '-' . strtolower($name);
+
+                    $path = "uploads/";
+
+                    @mkdir($path, 0777, true);
+
+                    if (move_uploaded_file($tmp_name, $path . $name)) {
+                        return $name;
+                    }
                 }
             }
+
         }
         return false;
     }
@@ -140,6 +161,8 @@ class Product_model extends CI_Model {
         $this->active           = !empty($_POST['active']) ? $_POST['active'] : 0;
 
         $this->image = $this->upload();
+        if(is_array($this->image))
+            $this->image = $this->image[0];
         if (empty($this->image)) unset($this->image);
 
         $this->db->update($this->table, $this, "id = ".$_POST['id']);

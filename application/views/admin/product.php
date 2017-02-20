@@ -33,9 +33,18 @@
                         <label>Price *</label>
                         <input type="text" name="price" required class="form-control" value="<?php echo !empty($product) ? $product->price : ''; ?>">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="list-images">
                         <label>Image</label>
-                        <input type="file" name="image" class="form-control">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[0]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[1]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[2]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[3]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[4]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[5]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[6]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[7]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[]">
+                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[]">
                     </div>
                     <div class="form-group form-checkbox">
                         <div class="checkbox">
