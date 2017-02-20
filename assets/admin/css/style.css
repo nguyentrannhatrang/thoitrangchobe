@@ -1,0 +1,2 @@
+#list-detail tr:nth-child(even) {background: #CCC}
+#list-detail tr:nth-child(odd) {background: #FFF}

@@ -1,12 +1,12 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: ntnt
  * Date: 2/20/2017
  * Time: 10:26 PM
  */
-class BaseObject
+class Base_object
 {
     public $data;
 

@@ -5,7 +5,7 @@
             <section class="panel">
                 <header class="panel-heading">
                     <?php if (!empty($product) && !empty($product->image)) { ?>
-                        <img src="<?php echo site_url('img.php?src=uploads/'.$product->image); ?>" height="50" class="m-r-lg">
+                        <img src="<?php echo site_url('img.php?src=uploads/product/'.$product->image); ?>" height="50" class="m-r-lg">
                     <?php } ?>
                     <span class="h4"><?php echo !empty($product) ? $product->name : 'Nou produs'; ?></span>
                 </header>
@@ -35,16 +35,44 @@
                     </div>
                     <div class="form-group" id="list-images">
                         <label>Image</label>
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[0]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[1]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[2]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[3]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[4]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[5]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[6]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[7]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[]">
-                        <input type="file" name="image[]" class="form-control"><input type="checkbox" name="delete_image[]">
+                        <br class="clear"/>
+                        <?php for($i = 0;$i<10;$i++){?>
+                            <div class="row">
+                                <div class="col-md-20 col-xs-4 left" style="height: 50px">
+                                    <input type="file" name="image[]" class="form-control">
+                                </div>
+                                <div class="col-md-1 col-xs-1 left">
+                                    <input type="checkbox"  style="height: 50px" name="delete_image[<?php echo $i; ?>]">
+                                </div>
+                                <div class="col-md-15 col-xs-3 left">
+                                    <?php if(isset($images[$i])){ ?>
+                                        <img height="50" class="m-r-lg" src="<?php echo $images[$i];?>">
+                                    <?php }?>
+                                </div>
+                                <br class="clear"/>
+                            </div>
+                        <?php }?>
+                    </div>
+                    <div class="form-group" id="list-detail">
+                        <table width="100%" border="1">
+                            <tr>
+                                <?php $countSize = count($array_size) + 1; ?>
+                                <th style="text-align: center" width="<?php echo intval(100/$countSize); ?>">Color/Size</th>
+                                <?php foreach ($array_size as $code_size=>$value_size) {?>
+                                    <th style="text-align: center" width="<?php echo intval(100/$countSize); ?>"><?php echo $value_size; ?></th>
+                                <?php }?>
+                            </tr>
+                            <?php foreach ($array_color as $code_color=>$value_color) {?>
+                                <tr>
+                                    <td style="text-align: center"><?php echo $value_color; ?></td>
+                                    <?php foreach ($array_size as $code_size=>$value_size) {?>
+                                        <td style="text-align: center" width="<?php echo intval(100/$countSize); ?>">
+                                            <input type="number" name="product_detail[<?php echo $code_color; ?>][<?php echo $code_size; ?>]"/>
+                                        </td>
+                                    <?php }?>
+                                </tr>
+                            <?php }?>
+                        </table>
                     </div>
                     <div class="form-group form-checkbox">
                         <div class="checkbox">

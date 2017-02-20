@@ -28,8 +28,16 @@ class Products extends Admin {
 
     public function edit($id)
     {
+        global $ARRAY_COLOR,$ARRAY_SIZE;
         $this->data['product'] = $this->product_model->get_data_by_id($id);
-
+        $listImages  = $this->product_images_model->get_data_by_product($id);
+        $this->data['images'] = array();
+        if($listImages)
+            foreach ($listImages as $item){
+                $this->data['images'][$item->i_order] = URL_SITE.'/img.php?src='.PATH_IMAGE_PRODUCT.$item->value;
+            }
+        $this->data['array_color'] = $ARRAY_COLOR;
+        $this->data['array_size'] = $ARRAY_SIZE;
         $this->load->view('admin/header', $this->data);
         $this->load->view('admin/product', $this->data);
         $this->load->view('admin/footer', $this->data);

@@ -60,7 +60,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array('session', 'database');
+$autoload['libraries'] = array('session', 'database','base_object','product_image_collection');
 
 
 /*
@@ -148,5 +148,6 @@ $autoload['model'] = array(
     'Filter_category_model' => 'filter_category_model',
     'Filter_model' => 'filter_model',
     'Filter_relation_model' => 'filter_relation_model',
-    'Newsletter_model' => 'newsletter_model'
+    'Newsletter_model' => 'newsletter_model',
+    'Product_images_model' => 'product_images_model'
 );

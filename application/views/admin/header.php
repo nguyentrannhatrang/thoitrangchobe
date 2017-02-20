@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="stylesheet" href="/assets/admin/css/app.v2.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/admin/css/font.css" type="text/css" cache="false"/>
+    <link rel="stylesheet" href="/assets/admin/css/style.css" type="text/css" cache="false"/>
     <!--[if lt IE 9]>
     <script src="/assets/admin/js/ie/respond.min.js" cache="false"></script>
     <script src="/assets/admin/js/ie/html5.js" cache="false"></script>

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Date: 2/20/2017
  * Time: 10:25 PM
  */
-class Product_image_collection extends Base_object
+class Product_detail_collection extends Base_object
 {
 
 

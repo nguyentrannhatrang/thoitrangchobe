@@ -106,50 +106,73 @@ class Product_model extends CI_Model {
         $this->active           = !empty($_POST['active']) ? $_POST['active'] : 0;
         $this->date           = date('Y-m-d',time());
 
-        $this->image = $this->upload();
-
+        /** @var Product_image_collection  $list */
+        $list = $this->upload();
+        $this->image = $list->getFirstImage();
         $this->db->insert($this->table, $this);
+        $insert_id = $this->db->insert_id();
+        $list->updateProduct($insert_id);
+        $list->save();
     }
 
     public function upload()
     {
-        $arrName = array();
+        $listImages = new Product_image_collection();
         if (!empty($_FILES['image'])) {
             if(isset($_FILES["image"]['name']) && is_array($_FILES["image"]['name'])){
                 foreach ($_FILES["image"]['name'] as $key=>$name){
                     if ($_FILES["image"]["error"][$key] == UPLOAD_ERR_OK) {
                         $tmp_name = $_FILES["image"]["tmp_name"][$key];
                         $name = $_FILES["image"]["name"][$key];
-                        $name = substr(md5($name), 0, 3) . substr(time(), 0, 3) . '-' . strtolower($name);
+                        $name = time().$key.'-'.strtolower($name);
 
-                        $path = "uploads/";
-
+                        $path = PATH_IMAGE_PRODUCT;
                         @mkdir($path, 0777, true);
 
                         if (move_uploaded_file($tmp_name, $path . $name)) {
-                            $arrName[] = $name;
+                            $modelImage = new Product_images_model();
+                            $modelImage->value = $name;
+                            $modelImage->i_order = $key;
+                            $listImages->addItem($key,$modelImage);
                         }
                     }
                 }
-                return $arrName;
             }else{
                 if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["image"]["tmp_name"];
                     $name = $_FILES["image"]["name"];
-                    $name = substr(md5($name), 0, 3) . substr(time(), 0, 3) . '-' . strtolower($name);
+                    $name = time().'0-'.strtolower($name);
 
-                    $path = "uploads/";
+                    $path = PATH_IMAGE_PRODUCT;
 
-                    @mkdir($path, 0777, true);
-
+                    @mkdir($path, 0777, true);                    
                     if (move_uploaded_file($tmp_name, $path . $name)) {
-                        return $name;
+                        $modelImage = new Product_images_model();
+                        $modelImage->value = $name;
+                        $modelImage->i_order = 0;
+                        $listImages->addItem(0,$modelImage);
                     }
                 }
             }
-
         }
-        return false;
+        return $listImages;
+    }
+
+    /**
+     * @return Product_image_collection
+     */
+    protected function getImagesDelete(){
+        $productId = $_POST['id'];
+        $listImages = new Product_image_collection();
+        if(isset($_POST['delete_image']) && is_array($_POST['delete_image'])){
+            foreach ($_POST['delete_image'] as $key=>$value){
+                $modelImage = new Product_images_model();
+                $modelImage->product = $productId;
+                $modelImage->i_order = $key;
+                $listImages->addItem($key,$modelImage);
+            }
+        }
+        return $listImages;
     }
 
     public function update()
@@ -160,11 +183,25 @@ class Product_model extends CI_Model {
         $this->category         = $_POST['category'];
         $this->active           = !empty($_POST['active']) ? $_POST['active'] : 0;
 
-        $this->image = $this->upload();
-        if(is_array($this->image))
-            $this->image = $this->image[0];
+        /** @var Product_image_collection $list */
+        $list = $this->upload();
+        $list->updateProduct($_POST['id']);
+        $list->save();
+        /** @var Product_image_collection $listDelete */
+        $listDelete = $this->getImagesDelete();
+        $listDelete->delete();
+        $image = new Product_images_model();
+        $data = $image->get_data_by_product($_POST['id']);
+        $listImages = new Product_image_collection();
+        foreach ($data as $item){
+            $listImages->addItem($item->i_order,$item);
+        }
+        if($listImages){
+            $this->image = $listImages->getFirstImage();
+        }
         if (empty($this->image)) unset($this->image);
-
         $this->db->update($this->table, $this, "id = ".$_POST['id']);
+
     }
+
 }
