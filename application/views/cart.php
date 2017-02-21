@@ -25,7 +25,7 @@
                             <tr data-price="<?php echo $product->price; ?>">
                                 <td class="cart_product">
                                     <a href="<?php echo site_url(url_title($product->name) . '-' . $product->id); ?>"><img
-                                            src="<?php echo site_url('img.php?src=uploads/' . $product->image . '&h=130'); ?>"
+                                            src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT . $product->image . '&h=130'); ?>"
                                             alt=""></a>
                                 </td>
                                 <td class="cart_description">

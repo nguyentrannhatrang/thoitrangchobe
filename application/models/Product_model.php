@@ -107,12 +107,19 @@ class Product_model extends CI_Model {
         $this->date           = date('Y-m-d',time());
 
         /** @var Product_image_collection  $list */
-        $list = $this->upload();
-        $this->image = $list->getFirstImage();
         $this->db->insert($this->table, $this);
         $insert_id = $this->db->insert_id();
+        $this->id = $insert_id;
+        $list = $this->upload();
+        $this->image = $list->getFirstImage();
+        if($this->image){
+            $this->image = $list->getFirstImage();
+        }
+        if (empty($this->image)) unset($this->image);
+        $this->db->update($this->table, $this, "id = ".$insert_id);
         $list->updateProduct($insert_id);
         $list->save();
+        return $insert_id;
     }
 
     public function upload()
@@ -124,11 +131,11 @@ class Product_model extends CI_Model {
                     if ($_FILES["image"]["error"][$key] == UPLOAD_ERR_OK) {
                         $tmp_name = $_FILES["image"]["tmp_name"][$key];
                         $name = $_FILES["image"]["name"][$key];
-                        $name = time().$key.'-'.strtolower($name);
+                        $name = $this->id.$key.'-'.strtolower($name);
 
                         $path = PATH_IMAGE_PRODUCT;
                         @mkdir($path, 0777, true);
-
+                        if(file_exists($path . $name)) unlink($path . $name);
                         if (move_uploaded_file($tmp_name, $path . $name)) {
                             $modelImage = new Product_images_model();
                             $modelImage->value = $name;
@@ -141,11 +148,12 @@ class Product_model extends CI_Model {
                 if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["image"]["tmp_name"];
                     $name = $_FILES["image"]["name"];
-                    $name = time().'0-'.strtolower($name);
+                    $name = $this->id.'0-'.strtolower($name);
 
                     $path = PATH_IMAGE_PRODUCT;
 
-                    @mkdir($path, 0777, true);                    
+                    @mkdir($path, 0777, true);
+                    if(file_exists($path . $name)) unlink($path . $name);
                     if (move_uploaded_file($tmp_name, $path . $name)) {
                         $modelImage = new Product_images_model();
                         $modelImage->value = $name;
@@ -182,7 +190,7 @@ class Product_model extends CI_Model {
         $this->price            = $_POST['price'];
         $this->category         = $_POST['category'];
         $this->active           = !empty($_POST['active']) ? $_POST['active'] : 0;
-
+        $this->id = $_POST['id'];
         /** @var Product_image_collection $list */
         $list = $this->upload();
         $list->updateProduct($_POST['id']);
@@ -201,6 +209,7 @@ class Product_model extends CI_Model {
         }
         if (empty($this->image)) unset($this->image);
         $this->db->update($this->table, $this, "id = ".$_POST['id']);
+        return $_POST['id'];
 
     }
 

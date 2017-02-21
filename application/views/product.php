@@ -10,7 +10,7 @@
                     <div class="col-sm-5">
                         <?php if (!empty($product->image)) { ?>
                             <div class="view-product">
-                                <img src="<?php echo site_url('img.php?src=uploads/'.$product->image.'&w=768'); ?>" alt="<?php echo $product->name.' | '.$general->logo_text; ?>" />
+                                <img src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$product->image.'&w=768'); ?>" alt="<?php echo $product->name.' | '.$general->logo_text; ?>" />
                             </div>
                         <?php } ?>
                     </div>

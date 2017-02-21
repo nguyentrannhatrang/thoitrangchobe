@@ -13,7 +13,7 @@ class Product_detail_model extends CI_Model {
 
         return $query->result();
     }
-    public function get_data_by_color_size($product_id,$color,$size)
+    public function get_data_by_product_color_size($product_id = null,$color = null,$size = null)
     {
         $where_array = [];
         if (isset($product_id)) {

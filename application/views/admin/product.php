@@ -5,7 +5,7 @@
             <section class="panel">
                 <header class="panel-heading">
                     <?php if (!empty($product) && !empty($product->image)) { ?>
-                        <img src="<?php echo site_url('img.php?src=uploads/product/'.$product->image); ?>" height="50" class="m-r-lg">
+                        <img src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$product->image); ?>" height="50" class="m-r-lg">
                     <?php } ?>
                     <span class="h4"><?php echo !empty($product) ? $product->name : 'Nou produs'; ?></span>
                 </header>
@@ -67,7 +67,8 @@
                                     <td style="text-align: center"><?php echo $value_color; ?></td>
                                     <?php foreach ($array_size as $code_size=>$value_size) {?>
                                         <td style="text-align: center" width="<?php echo intval(100/$countSize); ?>">
-                                            <input type="number" name="product_detail[<?php echo $code_color; ?>][<?php echo $code_size; ?>]"/>
+                                            <input type="number" min="0" name="product_detail[<?php echo $code_color; ?>][<?php echo $code_size; ?>]"
+                                            value="<?php if(isset($details[$code_color]) && isset($details[$code_color][$code_size])) echo $details[$code_color][$code_size]; ?>"/>
                                         </td>
                                     <?php }?>
                                 </tr>

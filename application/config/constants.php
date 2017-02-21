@@ -85,7 +85,7 @@ define('EXIT_DATABASE', 8); // database error
 define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 define('PATH_IMAGE_PRODUCT','uploads/product/');
-define('URL_SITE','http://shop1.local');
+define('URL_SITE','http://shop.local');
 
 $ARRAY_COLOR = array('xanh'=>'Mau Xanh','do'=>'Mau Do','tim'=>'Mau Tim','vang'=>'Mau Vang');
 $ARRAY_SIZE = array('s'=>'S','m'=>'M','xl'=>'XL','xxl'=>'XXL','xxxl'=>'XXXL','xxxxl'=>'XXXXL','xll'=>'XLL');

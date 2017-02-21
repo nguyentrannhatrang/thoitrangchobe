@@ -22,7 +22,7 @@
                         <tbody>
                         <?php foreach ($pages as $page) { ?>
                             <tr>
-                                <td><?php echo !empty($page->image) ? '<img height="25" src="' . site_url('img.php?src=uploads/' . $page->image) . '">' : ''; ?></td>
+                                <td><?php echo !empty($page->image) ? '<img height="25" src="' . site_url('img.php?src='.PATH_IMAGE_PRODUCT . $page->image) . '">' : ''; ?></td>
                                 <td><?php echo $page->title; ?></td>
                                 <td><?php echo character_limiter($page->content, 300); ?></td>
                                 <td><?php echo date('d M Y', strtotime($page->date)); ?></td>
