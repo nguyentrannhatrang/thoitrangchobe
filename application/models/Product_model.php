@@ -177,6 +177,10 @@ class Product_model extends CI_Model {
                 $modelImage = new Product_images_model();
                 $modelImage->product = $productId;
                 $modelImage->i_order = $key;
+                $data = $modelImage->get_data_by_id($productId,$key);
+                if(is_array($data) && isset($data[0])){
+                    $modelImage->value = $data[0]->value;
+                }
                 $listImages->addItem($key,$modelImage);
             }
         }
