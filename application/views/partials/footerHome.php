@@ -118,13 +118,13 @@
                 <p>Phone: +61 3 8376 6284</p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow rotateInUpRight" data-wow-duration="1s">
-                <form>
+                <form id="frm-contact">
                     <div class="form-group">
-                        <input type="text" placeholder="Name" class="form-control">
-                        <input type="text" placeholder="Email" class="form-control">
-                        <input type="text" placeholder="Subject" class="form-control">
-                        <textarea class="form-control" placeholder="Message" rows="5"></textarea>
-                        <button type="submit" class="form-control">SEND</button>
+                        <input type="text" name="name"  placeholder="Name" class="form-control required">
+                        <input type="text" name="email" placeholder="Email" class="form-control required">
+                        <input type="text" name="subject" placeholder="Subject" class="form-control required">
+                        <textarea class="form-control required" name="message" placeholder="Message" rows="5"></textarea>
+                        <button type="submit" id="btn-send-contact" class="form-control">SEND</button>
                     </div>
                 </form>
             </div>
@@ -151,6 +151,7 @@
 <script src="/assets/sites/js/owl.carousel.min.js"></script>
 <script src="/assets/sites/js/wow.min.js"></script>
 <script src="/assets/sites/js/registry.js"></script>
+<script src="/assets/sites/js/app.js"></script>
 </body>
 
 </html>

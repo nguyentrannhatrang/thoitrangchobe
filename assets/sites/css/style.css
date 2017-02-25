@@ -1009,3 +1009,6 @@ strong {
 .item-product{
     float:left;
 }
+.error{
+    border-color: #990000;
+}

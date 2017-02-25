@@ -58,4 +58,11 @@ class User extends Frontend
             }
         }
     }
+
+    public function send(){
+        if(!empty($_POST)){
+            //send mail
+        }
+        echo  json_encode(array('resutl'=> 1));
+    }
 }
