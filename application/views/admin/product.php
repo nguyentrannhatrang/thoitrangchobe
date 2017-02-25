@@ -15,6 +15,10 @@
                         <input type="text" name="name" required class="form-control" value="<?php echo !empty($product) ? $product->name : ''; ?>">
                     </div>
                     <div class="form-group">
+                        <label>Short Description</label>
+                        <input type="text" name="short_description" maxlength="200" class="form-control" value="<?php echo !empty($product) ? $product->short_description : ''; ?>"/>
+                    </div>
+                    <div class="form-group">
                         <label>Description</label>
                         <textarea name="description" class="form-control"><?php echo !empty($product) ? $product->description : ''; ?></textarea>
                     </div>

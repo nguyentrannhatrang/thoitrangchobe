@@ -12,6 +12,12 @@ class Products extends Admin {
 
     public function index()
     {
+        $this->load->library('email');
+        $this->load->library('sendEmail');
+        $arr = $this->config->item('email_config');
+        $email = new SendEmail();
+        $email->send($arr,'nguyentrannhatrang@gmail.com','test','first test send email');
+        die;
         $this->data['products'] = $this->product_model->get_data();
 
         $this->load->view('admin/header', $this->data);

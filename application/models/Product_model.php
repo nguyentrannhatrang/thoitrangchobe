@@ -3,6 +3,7 @@ class Product_model extends CI_Model {
 
     public $name;
     public $description;
+    public $short_description;
     public $category;
     public $price;
     public $image;
@@ -101,6 +102,7 @@ class Product_model extends CI_Model {
     {
         $this->name             = $_POST['name'];
         $this->description      = $_POST['description'];
+        $this->short_description      = $_POST['short_description'];
         $this->price            = $_POST['price'];
         $this->category         = $_POST['category'];
         $this->active           = !empty($_POST['active']) ? $_POST['active'] : 0;
@@ -191,6 +193,7 @@ class Product_model extends CI_Model {
     {
         $this->name             = $_POST['name'];
         $this->description      = $_POST['description'];
+        $this->short_description      = $_POST['short_description'];
         $this->price            = $_POST['price'];
         $this->category         = $_POST['category'];
         $this->active           = !empty($_POST['active']) ? $_POST['active'] : 0;

@@ -13,8 +13,8 @@ class Homepage extends Frontend
 	{
 		$this->data['popular_products'] = $this->product_model->get_popular_products();
 
-		$this->load->view('partials/header', $this->data);
+		$this->load->view('partials/headerHome', $this->data);
 		$this->load->view('homepage', $this->data);
-		$this->load->view('partials/footer', $this->data);
+		$this->load->view('partials/footerHome', $this->data);
 	}
 }

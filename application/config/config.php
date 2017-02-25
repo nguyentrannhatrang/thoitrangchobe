@@ -498,3 +498,15 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+$config['email_config'] = array(
+    'protocol'=>'smtp',
+    'smtp_host'=>'smtp.gmail.com',
+    'smtp_port'=>25,
+    'smtp_user'=>'tadidinguyentrang@gmail.com',
+    'smtp_pass'=>'ntnt123456',
+    'mailtype'=>'plain',
+    'charset'=>'utf-8',
+    'wordwrap'=>TRUE,
+    'newline'=>'\r\n',
+    'smtp_crypto'=>'tls'
+);

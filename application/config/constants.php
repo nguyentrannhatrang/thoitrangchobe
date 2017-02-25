@@ -86,6 +86,8 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 define('PATH_IMAGE_PRODUCT','uploads/product/');
 define('URL_SITE','http://shop.local');
+define('EMAIL_NAME','nguyentrang');
+define('EMAIL_SENDER','tadidinguyentrang@gmail.com');
 
 $ARRAY_COLOR = array('xanh'=>'Mau Xanh','do'=>'Mau Do','tim'=>'Mau Tim','vang'=>'Mau Vang');
 $ARRAY_SIZE = array('s'=>'S','m'=>'M','xl'=>'XL','xxl'=>'XXL','xxxl'=>'XXXL','xxxxl'=>'XXXXL','xll'=>'XLL');
