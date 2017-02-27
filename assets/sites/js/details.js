@@ -6,4 +6,10 @@ $(document).ready(function(){
     $('.list-size span').click(function(){
 
     });
+    $('.total').click(function () {
+        if($('.choice-specify').hasClass('show'))
+            $('.choice-specify').removeClass('show');
+        else
+            $('.choice-specify').addClass('show')
+    });
 });
