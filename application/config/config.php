@@ -507,6 +507,5 @@ $config['email_config'] = array(
     'mailtype'=>'plain',
     'charset'=>'utf-8',
     'wordwrap'=>TRUE,
-    'newline'=>'\r\n',
-    'smtp_crypto'=>'tls'
+    'newline'=>'\r\n'
 );

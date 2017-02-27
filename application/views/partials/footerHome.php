@@ -152,6 +152,7 @@
 <script src="/assets/sites/js/wow.min.js"></script>
 <script src="/assets/sites/js/registry.js"></script>
 <script src="/assets/sites/js/app.js"></script>
+<script src="/assets/sites/js/details.js"></script>
 </body>
 
 </html>

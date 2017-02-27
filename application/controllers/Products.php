@@ -75,9 +75,9 @@ class Products extends Frontend
 
         $this->product_model->update_views($id);
 
-        $this->load->view('partials/header', $this->data);
+        $this->load->view('partials/headerHome', $this->data);
         $this->load->view('product', $this->data);
-        $this->load->view('partials/footer', $this->data);
+        $this->load->view('partials/footerHome', $this->data);
     }
 
     public function success()
