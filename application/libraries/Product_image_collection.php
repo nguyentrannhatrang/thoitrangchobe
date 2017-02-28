@@ -53,4 +53,8 @@ class Product_image_collection extends Base_object
             $item->delete();
         }
     }
+    public function isEmpty(){
+        if(empty($this->data)) return true;
+        return false;
+    }
 }

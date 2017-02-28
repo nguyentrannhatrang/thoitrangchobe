@@ -13,6 +13,13 @@ class Product_detail_model extends CI_Model {
 
         return $query->result();
     }
+
+    /**
+     * @param null $product_id
+     * @param null $color
+     * @param null $size
+     * @return mixed
+     */
     public function get_data_by_product_color_size($product_id = null,$color = null,$size = null)
     {
         $where_array = [];
@@ -33,6 +40,9 @@ class Product_detail_model extends CI_Model {
         return $data;
     }
 
+    /**
+     * @return bool
+     */
     public function insert()
     {       
         $insert = $this->db->insert($this->table, $this);

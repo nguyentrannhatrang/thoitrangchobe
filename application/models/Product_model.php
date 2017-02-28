@@ -101,7 +101,7 @@ class Product_model extends CI_Model {
     public function insert()
     {
         $this->name             = $_POST['name'];
-        $this->description      = $_POST['description'];
+        //$this->description      = $_POST['description'];
         $this->short_description      = $_POST['short_description'];
         $this->price            = $_POST['price'];
         $this->category         = $_POST['category'];
@@ -142,6 +142,8 @@ class Product_model extends CI_Model {
                             $modelImage = new Product_images_model();
                             $modelImage->value = $name;
                             $modelImage->i_order = $key;
+                            if(isset($_FILES["color_image"]) && isset($_FILES["color_image"][$key]) &&$_FILES["color_image"][$key])
+                                $modelImage->color = $_FILES["color_image"][$key];
                             $listImages->addItem($key,$modelImage);
                         }
                     }
@@ -160,6 +162,8 @@ class Product_model extends CI_Model {
                         $modelImage = new Product_images_model();
                         $modelImage->value = $name;
                         $modelImage->i_order = 0;
+                        if(isset($_FILES["color_image"]) && isset($_FILES["color_image"][0]) &&$_FILES["color_image"][0])
+                            $modelImage->color = $_FILES["color_image"][0];
                         $listImages->addItem(0,$modelImage);
                     }
                 }
@@ -216,8 +220,33 @@ class Product_model extends CI_Model {
         }
         if (empty($this->image)) unset($this->image);
         $this->db->update($this->table, $this, "id = ".$_POST['id']);
+        if($list->isEmpty() && $_POST['id']){
+            //update color image
+            $this->updateColorImage($_POST['id']);
+        }
         return $_POST['id'];
 
     }
+    private function updateColorImage($productId){
+        if(!$productId) return;
+        $productImage = new Product_images_model();
+        if(isset($_POST["color_image"]) && is_array($_POST["color_image"])){
+            foreach ($_POST["color_image"] as $index=>$color){
+                if(!$color) continue;
+                $data = $productImage->get_data_by_id($productId,$index);
+                if(empty($data)) continue;
+                $data = $data[0];
+                $productImage->product = $data->product;
+                $productImage->i_order = $data->i_order;
+                $productImage->value = $data->value;
+                $productImage->color = $color;
+                $productImage->update();
+            }
+        }
+    }
+    public function save(){
+        $this->db->update($this->table, $this, "id = ".$this->id);
+    }
+        
 
 }

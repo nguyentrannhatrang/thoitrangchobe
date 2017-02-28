@@ -13,3 +13,6 @@ CREATE TABLE `product_detail` (
   `quantity` int(5) NOT NULL,
   PRIMARY KEY (`product`,`color`,`size`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `product_images`
+  ADD COLUMN `color` varchar(20) DEFAULT NULL;

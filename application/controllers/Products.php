@@ -68,13 +68,26 @@ class Products extends Frontend
         $this->load->view('partials/footer', $this->data);
     }
 
+    /**
+     * Productdetail
+     * 
+     * @param $id
+     */
     public function product($id)
     {
         $this->data['product'] = $this->product_model->get_data_by_id($id);
         $this->data['comments'] = $this->comment_model->get_data_for(false, $this->data['product']->id);
-
-        $this->product_model->update_views($id);
-
+        $this->data['product_images'] = $this->product_images_model->get_data_by_product($id);
+        $this->data['product_detail'] = $this->product_detail_model->get_data_by_product_color_size($id);
+        //$this->product_model->update_views($id);
+        $aSizeByColor = array();
+        /** @var Product_detail_model $detail */
+        foreach ($this->data['product_detail'] as $detail){
+            if(!isset($aSizeByColor[$detail->color]))
+                $aSizeByColor[$detail->color] = array();
+            $aSizeByColor[$detail->color][$detail->size] = $detail->quantity;
+        }
+        $this->data['size_by_color'] = $aSizeByColor;
         $this->load->view('partials/headerHome', $this->data);
         $this->load->view('product', $this->data);
         $this->load->view('partials/footerHome', $this->data);

@@ -19,10 +19,6 @@
                         <input type="text" name="short_description" maxlength="200" class="form-control" value="<?php echo !empty($product) ? $product->short_description : ''; ?>"/>
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <textarea name="description" class="form-control"><?php echo !empty($product) ? $product->description : ''; ?></textarea>
-                    </div>
-                    <div class="form-group">
                         <label>Category *</label>
                         <select name="category" required class="form-control">
                             <option value="">All categories</option>
@@ -42,16 +38,26 @@
                         <br class="clear"/>
                         <?php for($i = 0;$i<10;$i++){?>
                             <div class="row">
-                                <div class="col-md-20 col-xs-4 left" style="height: 50px">
+                                <div class="col-md-4 col-xs-4 left" style="height: 50px">
                                     <input type="file" name="image[]" class="form-control">
                                 </div>
                                 <div class="col-md-1 col-xs-1 left">
                                     <input type="checkbox"  style="height: 50px" name="delete_image[<?php echo $i; ?>]">
                                 </div>
-                                <div class="col-md-15 col-xs-3 left">
+                                <div class="col-md-3 col-xs-3 left">
                                     <?php if(isset($images[$i])){ ?>
                                         <img height="50" class="m-r-lg" src="<?php echo $images[$i];?>">
                                     <?php }?>
+                                </div>
+                                <div class="col-md-3 col-xs-3 left">
+                                    <select name="color_image[<?php echo $i; ?>]">
+                                        <option value="">--Select--</option>
+                                        <?php foreach ($array_color as $code_color=>$value_color) {?>
+                                            <option value="<?php echo $code_color; ?>"
+                                                <?php if(!empty($images_color) && !empty($images_color[$i]) && $images_color[$i] == $code_color) echo 'selected'?>>
+                                                <?php echo $value_color; ?></option>
+                                        <?php }?>
+                                    </select>
                                 </div>
                                 <br class="clear"/>
                             </div>

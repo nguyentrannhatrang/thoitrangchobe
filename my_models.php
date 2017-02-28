@@ -22,6 +22,8 @@
  * @property Filter_relation_model $filter_relation_model
  * @property Newsletter_model $newsletter_model
  * @property Offer_model $offer_model
+ * @property Product_images_model $product_images_model
+ * @property Product_detail_model $product_detail_model
  *
  *
  */

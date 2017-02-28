@@ -45,24 +45,24 @@
                     <a>
                         <span class="hidden icon-83"></span>
                         <span class="babi-icon babi-icon-2"></span>
-                        <img class="ty-pict    " id="det_img_preview_395879_42329"
+                        <img class="ty-pict" id="thumb-img"
                              src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166812"
                              width="600" height="" alt="Màu xanh ngọc" title="Màu xanh ngọc">
                     </a>
                 </div>
                 <div class="list-images">
-                    <img class="" id="det_img_variant_image_395879_16237_146510" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(7).jpg?t=1488166812" width="50" height="60" alt="Màu tím" title="Màu tím" onclick="fn_set_option_value('395879', '16237', '146510'); fn_set_active_previewer('det_img_link_preview_395879_42326'); void(0);">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(7).jpg?t=1488166812" width="50" height="60" alt="Màu tím" title="Màu tím">
 
-                    <img class="" id="det_img_variant_image_395879_16237_146511" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(2).jpg?t=1488166812" width="50" height="60" alt="Màu hồng dâu" title="Màu hồng dâu" onclick="fn_set_option_value('395879', '16237', '146511'); fn_set_active_previewer('det_img_link_preview_395879_42327'); void(0);">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(2).jpg?t=1488166812" width="50" height="60" alt="Màu hồng dâu" title="Màu hồng dâu">
 
-                    <img class="" id="det_img_variant_image_395879_16237_146512" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(4).jpg?t=1488166813" width="50" height="60" alt="Màu hồng cam" title="Màu hồng cam" onclick="fn_set_option_value('395879', '16237', '146512'); fn_set_active_previewer('det_img_link_preview_395879_42328'); void(0);">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(4).jpg?t=1488166813" width="50" height="60" alt="Màu hồng cam" title="Màu hồng cam">
 
-                    <img class="" id="det_img_variant_image_395879_16237_146513" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc" onclick="fn_set_option_value('395879', '16237', '146513'); fn_set_active_previewer('det_img_link_preview_395879_42329'); void(0);">
-                    <img class="" id="det_img_variant_image_395879_16237_146513" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc" onclick="fn_set_option_value('395879', '16237', '146513'); fn_set_active_previewer('det_img_link_preview_395879_42329'); void(0);">
-                    <img class="" id="det_img_variant_image_395879_16237_146513" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc" onclick="fn_set_option_value('395879', '16237', '146513'); fn_set_active_previewer('det_img_link_preview_395879_42329'); void(0);">
-                    <img class="" id="det_img_variant_image_395879_16237_146513" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc" onclick="fn_set_option_value('395879', '16237', '146513'); fn_set_active_previewer('det_img_link_preview_395879_42329'); void(0);">
-                    <img class="" id="det_img_variant_image_395879_16237_146513" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc" onclick="fn_set_option_value('395879', '16237', '146513'); fn_set_active_previewer('det_img_link_preview_395879_42329'); void(0);">
-                    <img class="" id="det_img_variant_image_395879_16237_146513" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc" onclick="fn_set_option_value('395879', '16237', '146513'); fn_set_active_previewer('det_img_link_preview_395879_42329'); void(0);">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
                 </div>
             </div>
             <!-- product detail-->
@@ -105,7 +105,7 @@
                                 <label >Kích cỡ <span class="ty-tooltip-block"><a data-toggle="tooltip" title="<p>Chọn kích cỡ quan ao cho bé</p>">
                                         <i class="fa fa-question-circle"></i></a></span>:</label>
                                 <div class="list-size">
-                                    <span class="selected" title="">8.5 - 10.5kg</span>
+                                    <span class="selected" id="size-id" title="">8.5 - 10.5kg</span>
                                     <span title="">10 - 11.5kg</span>
                                     <span>11.5 - 13.5kg</span>
                                     <span>13.5 - 15kg</span>
@@ -171,4 +171,7 @@
         </div>
     </div>
 </div>
+<script>
+    var size_by_color = '<?php echo json_encode($size_by_color);?>';
+</script>
 <!-- end feature-product -->

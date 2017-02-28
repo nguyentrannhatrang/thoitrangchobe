@@ -5,6 +5,7 @@ class Product_images_model extends CI_Model {
     public $product;
     public $i_order;
     public $value;
+    public $color;
 
     private $table = 'product_images';
 
@@ -34,11 +35,14 @@ class Product_images_model extends CI_Model {
         return $data;
     }
 
-    public function get_data_by_product($product_id)
+    public function get_data_by_product($product_id,$color = '')
     {
         $where_array = '';
         if (isset($product_id) && $product_id) {
             $where_array = ['product' => (int) $product_id];
+        }
+        if($color){
+            $where_array['color'] = $color;
         }
 
         $query = $this->db->get_where($this->table, $where_array);
