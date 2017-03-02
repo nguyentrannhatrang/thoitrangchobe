@@ -183,11 +183,11 @@ CREATE TABLE `products` (
   `subcategory_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `price` float NOT NULL,
-  `product_currency` varchar(255) NOT NULL,
-  `merchant_email` varchar(255) NOT NULL,
+  `product_currency` varchar(255) DEFAULT NULL,
+  `merchant_email` varchar(255) DEFAULT NULL,
   `product_description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `payment_mode` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `payment_mode` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int(11) DEFAULT NULL,
   `description` text,
@@ -454,7 +454,7 @@ ALTER TABLE `users`
 ALTER TABLE `wishlist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `products`
-  ADD COLUMN `short_description` varchar(255) NOT NULL;
+  ADD COLUMN `short_description` varchar(255) DEFAULT NULL;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

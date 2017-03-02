@@ -27,6 +27,12 @@ class Products extends Admin {
 
     public function create()
     {
+        global $ARRAY_COLOR,$ARRAY_SIZE;
+        $this->data['images'] = array();
+        $this->data['images_color'] = array();
+        $this->data['array_color'] = $ARRAY_COLOR;
+        $this->data['array_size'] = $ARRAY_SIZE;
+        $this->data['details'] = array();
         $this->load->view('admin/header', $this->data);
         $this->load->view('admin/product', $this->data);
         $this->load->view('admin/footer', $this->data);
@@ -78,7 +84,7 @@ class Products extends Admin {
     }
 
     public function save()
-    {
+    {//var_export($_POST);die;
         $productId = null;
         if (!empty($_POST) && !empty($_POST['id'])) {
             $productId = $this->product_model->update();

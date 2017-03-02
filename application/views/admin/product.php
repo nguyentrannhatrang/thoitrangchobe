@@ -39,7 +39,7 @@
                         <?php for($i = 0;$i<10;$i++){?>
                             <div class="row">
                                 <div class="col-md-4 col-xs-4 left" style="height: 50px">
-                                    <input type="file" name="image[]" class="form-control">
+                                    <input type="file" name="image[<?php echo $i; ?>]" class="form-control">
                                 </div>
                                 <div class="col-md-1 col-xs-1 left">
                                     <input type="checkbox"  style="height: 50px" name="delete_image[<?php echo $i; ?>]">
