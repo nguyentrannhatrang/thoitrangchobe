@@ -1041,7 +1041,7 @@ img.select{
     border: 1px solid #84cc18;
     color: #84cc18;
     display: inline-block;
-    margin: 0 0 5px;
+    margin: 0 7px 5px;
     background: #fff;
     position: relative;
 }
@@ -1135,4 +1135,10 @@ img.select{
 }
 .left{
     float: left;
+}
+.highlight{
+    color: #00CC00;
+}
+.modal {
+    top: 20% !important;
 }

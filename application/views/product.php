@@ -46,73 +46,53 @@
                         <span class="hidden icon-83"></span>
                         <span class="babi-icon babi-icon-2"></span>
                         <img class="ty-pict" id="thumb-img"
-                             src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166812"
-                             width="600" height="" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                             src=""
+                             width="600" height="" alt="" title="">
                     </a>
                 </div>
                 <div class="list-images">
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(7).jpg?t=1488166812" width="50" height="60" alt="Màu tím" title="Màu tím">
+                    <div class="slick-image" data-flickity='{ "groupCells": true }'>
+                    <?php foreach ($product_images as $image) {?>
 
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(2).jpg?t=1488166812" width="50" height="60" alt="Màu hồng dâu" title="Màu hồng dâu">
+                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
+                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
+                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
+                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
 
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(4).jpg?t=1488166813" width="50" height="60" alt="Màu hồng cam" title="Màu hồng cam">
-
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
-                    <img class="" src="https://babi.vn/images/thumbnails/600/600/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813" width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+                    <?php }?>
+                    </div>
                 </div>
             </div>
             <!-- product detail-->
             <form id="frm-book">
             <div id="product-detail-content" class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="ty-product-block-title">Đồ bộ hè cho bé gái chấm bi viền nhún (9 tháng - 7 tuổi)</h1>
+                <h1 class="ty-product-block-title"><?php echo $product->name; ?></h1>
                 <div class="short_description">
                     <div class="product_excerpt">
-                        <p>Những <strong>bộ đồ hè cho bé gái</strong> như váy hai dây điệu đà hay áo phông quần short được bán tại Babi.vn đều đẹp đến mức bà mẹ nào cũng muốn mua cho con gái.</p>
-
-                    </div>
-                    <div class="product_excerpt_toggle">
-                        <span class="expand">Xem thêm...</span>
-                        <span class="collapse">Thu gọn <i class="adr small icon caret up blue"></i></span>
+                        <?php echo $product->short_description; ?>
                     </div>
                 </div>
                 <div class="color-size">
                     <input type="hidden" id="product-color" value="" />
                     <input type="hidden" id="product-size" value="" />
+                    <input type="hidden" id="product-id" value="<?php echo $product->id; ?>" />
                     <div class="product-action-block">
                         <div class="choice-specify">
                             <div class="">
                                 <label >Chọn màu<span class=""><a data-toggle="tooltip" title="<p>Chọn ngay màu sắc phù hợp cho bé.</p>"><i class="fa fa-question-circle"></i>
                                     </a>
-                                </span>:</label>
+                                </span>: <span id="selected_color" class="highlight"></span></label>
                                 <div class="list-color">
-                                    <img id="color-id" class="select" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(7).jpg?t=1488166812"
-                                         width="50" height="60" alt="Màu tím" title="Màu tím">
-                                    <img class="" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(2).jpg?t=1488166812"
-                                         width="50" height="60" alt="Màu hồng dâu" title="Màu hồng dâu" >
-                                    <img class="" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(4).jpg?t=1488166813"
-                                         width="50" height="60" alt="Màu hồng cam" title="Màu hồng cam" >
-                                    <img class="" src="https://babi.vn/images/thumbnails/50/60/variant_image/42/bo-be-giai-cham-bi-co-vien-nhun-beo-truoc-nguc_(1).jpg?t=1488166813"
-                                         width="50" height="60" alt="Màu xanh ngọc" title="Màu xanh ngọc">
+
                                 </div>
                             </div>
                             <br class="clearfix"/>
 
                             <div>
                                 <label >Kích cỡ <span class="ty-tooltip-block"><a data-toggle="tooltip" title="<p>Chọn kích cỡ quan ao cho bé</p>">
-                                        <i class="fa fa-question-circle"></i></a></span>:</label>
+                                        <i class="fa fa-question-circle"></i></a></span>: <span id="selected_size" class="highlight"></span></label>
                                 <div class="list-size">
-                                    <span class="selected" id="size-id" title="">8.5 - 10.5kg</span>
-                                    <span title="">10 - 11.5kg</span>
-                                    <span>11.5 - 13.5kg</span>
-                                    <span>13.5 - 15kg</span>
-                                    <span>15 - 17kg</span>
-                                    <span>17 - 20kg</span>
-                                    <span>20 - 23kg</span>
-                                    <span>23 - 26kg</span>
+
                                 </div>
                             </div>
                             <br class="clearfix"/> <!-- add cart-->
@@ -120,16 +100,7 @@
                                 <div class="">
                                     <div class="ty-qty clearfix">
                                         <label class="ty-control-group__label" for="qty_count_395879">Số lượng:</label>
-                                        <select name="product_data[395879][amount]" id="qty_count_395879">
-                                            <option value="1" selected="">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
+                                        <select name="quantity" id="cb_quantity">
                                         </select>
                                     </div>
                                 </div>
@@ -153,7 +124,7 @@
                             <div class="add-cart-button">
                                 <div class="ty-product-block__button">
                                     <div class="cm-reload-395872 " id="add_to_cart_update_395872">
-                                        <button id="button_cart_395872" class="ty-btn__primary ty-btn__big ty-btn__add-to-cart cm-form-dialog-closer ty-btn" type="submit" name="dispatch[checkout.add..395872]">
+                                        <button id="add-to-cart" class="ty-btn__primary ty-btn__big ty-btn__add-to-cart cm-form-dialog-closer ty-btn" type="submit" name="dispatch[checkout.add..395872]">
                                             <i class="fa fa-shopping-cart"></i> <span>Thêm vào Giỏ</span>
                                         </button>
                                     </div>
@@ -186,5 +157,26 @@
 <div class="fb-like" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 <script>
     var size_by_color = '<?php echo json_encode($size_by_color);?>';
+    var color_image = '<?php echo json_encode($color_image);?>';
+    var size_name = '<?php echo json_encode($size_name);?>';
 </script>
 <!-- end feature-product -->
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to save changes you made to document before closing?</p>
+                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

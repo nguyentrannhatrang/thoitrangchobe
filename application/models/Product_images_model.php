@@ -78,4 +78,11 @@ class Product_images_model extends CI_Model {
 
         return (boolean) $query;
     }
+
+    public function convertDataToModel($data){
+        $this->product = $data->product;
+        $this->i_order = $data->i_order;
+        $this->value = $data->value;
+        $this->color = $data->color;
+    }
 }

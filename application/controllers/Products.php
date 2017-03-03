@@ -75,6 +75,7 @@ class Products extends Frontend
      */
     public function product($id)
     {
+        global $ARRAY_COLOR,$ARRAY_SIZE;
         $this->data['product'] = $this->product_model->get_data_by_id($id);
         $this->data['comments'] = $this->comment_model->get_data_for(false, $this->data['product']->id);
         $this->data['product_images'] = $this->product_images_model->get_data_by_product($id);
@@ -83,11 +84,23 @@ class Products extends Frontend
         $aSizeByColor = array();
         /** @var Product_detail_model $detail */
         foreach ($this->data['product_detail'] as $detail){
+            if(!$detail->quantity) continue;
             if(!isset($aSizeByColor[$detail->color]))
                 $aSizeByColor[$detail->color] = array();
             $aSizeByColor[$detail->color][$detail->size] = $detail->quantity;
         }
+        $colorImage = array();
+        /** @var Product_images_model $item */
+        foreach ($this->data['product_images'] as $item){
+            if(!$item->color || !$item->value) continue;
+            $colorImage[$item->color] = array(
+                'url'=>site_url('img.php?src='.PATH_IMAGE_PRODUCT.$item->value.'&h=60'),
+                'alt'=>$ARRAY_COLOR[$item->color]
+            );
+        }
         $this->data['size_by_color'] = $aSizeByColor;
+        $this->data['color_image'] = $colorImage;
+        $this->data['size_name'] = $ARRAY_SIZE;
         $this->load->view('partials/headerHome', $this->data);
         $this->load->view('product', $this->data);
         $this->load->view('partials/footerHome', $this->data);
