@@ -131,5 +131,38 @@ function render_quantity(quantity) {
     }
 }
 function add_to_cart() {
+    //check valid
+    if($('#product-id').val() == ''){
+        return;
+    }
+    if($('#product-color').val() == ''){
+        $('#frm-invalid .modal-body p').html('Bạn chưa chọn màu');
+        $("#frm-invalid").modal('show');
+        return;
+    }
+    if($('#product-size').val() == ''){
+        $('#frm-invalid .modal-body p').html('Bạn chưa chọn size');
+        $("#frm-invalid").modal('show');
+        return;
+    }
+    if($('#cb_quantity').val() == ''){
+        $('#frm-invalid .modal-body p').html('Bạn chưa chọn số lượng');
+        $("#frm-invalid").modal('show');
+        return;
+    }
+    var option = {
+        type: 'POST',
+        url: '/products/addCart',
+        dataType: 'json',
+        data: $('#frm-book').serialize(),
+        success:  function(data) {
+            
+            $('#add-success').modal('show');
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
 
+        }
+    };
+    $.ajax(option);
+    
 }

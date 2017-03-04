@@ -47,18 +47,14 @@
                         <span class="babi-icon babi-icon-2"></span>
                         <img class="ty-pict" id="thumb-img"
                              src=""
-                             width="600" height="" alt="" title="">
+                             width="600" height="" alt="<?php echo $product->name; ?>" title="<?php echo $product->name; ?>">
                     </a>
                 </div>
                 <div class="list-images">
                     <div class="slick-image" data-flickity='{ "groupCells": true }'>
                     <?php foreach ($product_images as $image) {?>
 
-                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
-                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
-                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
-                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="" title="">
-
+                        <img class="" src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$image->value.'&h=600') ?>" width="50" height="60" alt="<?php echo $product->name; ?>" title="<?php echo $product->name; ?>">                       
                     <?php }?>
                     </div>
                 </div>
@@ -73,9 +69,9 @@
                     </div>
                 </div>
                 <div class="color-size">
-                    <input type="hidden" id="product-color" value="" />
-                    <input type="hidden" id="product-size" value="" />
-                    <input type="hidden" id="product-id" value="<?php echo $product->id; ?>" />
+                    <input type="hidden" id="product-color" name="product-color" value="" />
+                    <input type="hidden" id="product-size" name="product-size" value="" />
+                    <input type="hidden" id="product-id" name="product-id" value="<?php echo $product->id; ?>" />
                     <div class="product-action-block">
                         <div class="choice-specify">
                             <div class="">
@@ -128,9 +124,6 @@
                                             <i class="fa fa-shopping-cart"></i> <span>Thêm vào Giỏ</span>
                                         </button>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -162,20 +155,36 @@
 </script>
 <!-- end feature-product -->
 
-<div id="myModal" class="modal fade">
+<div id="add-success" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <p>Do you want to save changes you made to document before closing?</p>
-                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                <p></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="frm-invalid" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                
             </div>
         </div>
     </div>

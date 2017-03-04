@@ -69,4 +69,6 @@ $(document).ready(function(){
 
       }
   });
+    //get data to show cart
+    
 })

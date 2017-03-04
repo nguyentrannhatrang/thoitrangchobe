@@ -210,4 +210,33 @@ class Products extends Frontend
         $this->load->view('cart', $this->data);
         $this->load->view('partials/footer', $this->data);
     }
+
+    public function addCart()
+    {
+        $productId = isset($_POST['product-id'])?$_POST['product-id']:'';
+        $color = isset($_POST['product-color'])?$_POST['product-color']:'';
+        $size = isset($_POST['product-size'])?$_POST['product-size']:'';
+        $quantity = isset($_POST['quantity'])?$_POST['quantity']:'';
+        if(!$productId || !$color || !$size || !$quantity) {
+            echo  json_encode(array('result'=> 0,'error'=>'Dữ liệu không đúng'));
+            return;
+        }
+
+        $this->data['products'] = array();
+        if (!empty($this->data['cart'])) {
+            foreach ($this->data['cart'] as $p) {
+                if (!empty($p['id']) && !empty($p['quantity'])) {
+                    $product = $this->product_model->get_data_by_id($p['id']);
+                    if (!empty($product)) {
+                        $product->quantity = $p['quantity'];
+                        $this->data['products'][$product->id] = $product;
+                    }
+                }
+            }
+        }
+
+        $this->load->view('partials/header', $this->data);
+        $this->load->view('cart', $this->data);
+        $this->load->view('partials/footer', $this->data);
+    }
 }
