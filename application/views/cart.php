@@ -1,154 +1,113 @@
-<form method="post" action="<?php echo site_url('products/checkout'); ?>">
-    <section id="cart_items">
+<div id="checkout-page">
+    <form method="post" action="<?php echo site_url('products/checkout'); ?>">
         <div class="container">
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="<?php echo site_url('/'); ?>">Home</a></li>
-                    <li class="active">Your cart</li>
-                </ol>
-            </div>
-            <?php if (!empty($products)) { ?>
-                <div class="table-responsive cart_info">
-                    <table class="table table-condensed">
-                        <thead>
-                        <tr class="cart_menu">
-                            <td class="image">Product</td>
-                            <td class="description"></td>
-                            <td class="price">Price</td>
-                            <td class="quantity">Amount</td>
-                            <td class="total">Total</td>
-                            <td></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($products as $product) { ?>
-                            <tr data-price="<?php echo $product->price; ?>">
-                                <td class="cart_product">
-                                    <a href="<?php echo site_url(url_title($product->name) . '-' . $product->id); ?>"><img
-                                            src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT . $product->image . '&h=130'); ?>"
-                                            alt=""></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4>
-                                        <a href="<?php echo site_url(url_title($product->name) . '-' . $product->id); ?>"><?php echo $product->name; ?></a>
-                                    </h4>
-
-                                    <p>View: <?php echo $product->views; ?></p>
-                                </td>
-                                <td class="cart_price">
-                                    <p><?php echo $product->price; ?> <?php if (!empty($general->currency)) echo $general->currency ?></p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <a class="cart_quantity_up"> + </a>
-                                        <input class="cart_quantity_input" type="text"
-                                               name="products[<?php echo $product->id; ?>][quantity]"
-                                               value="<?php echo $product->quantity; ?>"
-                                               autocomplete="off" size="4">
-                                        <a class="cart_quantity_down"> - </a>
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price"
-                                       data-price="<?php echo $product->price * $product->quantity; ?>"><?php echo $product->price * $product->quantity; ?>
-                                        <?php if (!empty($general->currency)) echo $general->currency ?></p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                        </tbody>
-                    </table>
+            <div class="row">
+                <div class="breadcrumbs">
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo site_url('/'); ?>">Home</a></li>
+                        <li class="active">Your cart</li>
+                    </ol>
                 </div>
-            <?php } else { ?>
-                <p>Nu aveti nici un produs in cos.</p>
-            <?php } ?>
-        </div>
-    </section>
-    <!--/#cart_items-->
-
-    <section id="do_action">
-        <div class="container">
-            <div class="heading">
-                <h3>The last step. How would you like receiving your order?</h3>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores dolorem doloremque dolores
-                    dolorum earum facilis hic in, ipsam perferendis possimus quisquam rem, sit, suscipit velit. At enim
-                    odio
-                    quae?</p>
+            </div>
+            <div class="row row-chan">
+                <div class="col-lg-3 col-xs-12 col-sm-12">
+                    <img src="http://shop.local/img.php?src=uploads/product/810-pink-shirt-thumb.jpg&h=120" width="80px" height="120px"/>
+                </div>
+                <div class="col-lg-6 col-xs-12 col-sm-12">
+                    <strong> ten sp</strong>
+                    <p> Color</p>
+                    <p> Size</p>
+                    <p> So luong</p>
+                </div>
+                <div class="col-lg-3 col-xs-12 col-sm-12 price">
+                    <strong> 100.000</strong>
+                </div>
+            </div>
+            <div class="row row-le">
+                <div class="col-lg-3 col-xs-12 col-sm-12">
+                    <img src="http://shop.local/img.php?src=uploads/product/810-pink-shirt-thumb.jpg&h=120" width="80px" height="120px"/>
+                </div>
+                <div class="col-lg-6 col-xs-12 col-sm-12">
+                    <strong> ten sp</strong>
+                    <p> Color</p>
+                    <p> Size</p>
+                    <p> So luong</p>
+                </div>
+                <div class="col-lg-3 col-xs-12 col-sm-12 price">
+                    <strong> 100.000</strong>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-6 col-xs-12 col-sm-12 align-right visible-xs visible-sm">
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
+                            Tổng tiền
+                        </div>
+                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
+                            2000000
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12 col-sm-12 user-info">
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12 col-sm-12">
+                            Ten khach hang  <a data-toggle="tooltip" title='Tên khách hàng để liên hệ'><span class="fnt-16 red">*</span></a>
+                        </div>
+                        <div class="col-lg-8 col-xs-12 col-sm-12">
+                            <input type="text" name="name" required class="required">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12 col-sm-12">
+                            Email  <a data-toggle="tooltip" title='Email để liên hệ'><span class="fnt-16 red">*</span></a>
+                        </div>
+                        <div class="col-lg-8 col-xs-12 col-sm-12">
+                            <input type="email" name="email" required class="required">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12 col-sm-12">
+                            So dien thoai  <a data-toggle="tooltip" title='Số điện thoại để liên hệ'><span class="fnt-16 red">*</span></a>
+                        </div>
+                        <div class="col-lg-8 col-xs-12 col-sm-12">
+                            <input type="text" name="telephone" required class="required">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12 col-sm-12">
+                            Địa chỉ <a data-toggle="tooltip" title='Địa chỉ để giao hàng'><span class="fnt-16 red">*</span></a>
+                        </div>
+                        <div class="col-lg-8 col-xs-12 col-sm-12">
+                            <input type="text" name="address" required class="required">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12 col-sm-12">
+                            Lời nhắn
+                        </div>
+                        <div class="col-lg-8 col-xs-12 col-sm-12">
+                            <textarea name="message" style="width: 100%" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12 col-sm-12 align-right hidden-xs hidden-sm">
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
+                            Tổng tiền
+                        </div>
+                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
+                            2000000
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-sm-8">
-                    <div class="chose_area">
-                        <ul class="user_option">
-                            <li>
-                                <input type="checkbox" name="prefer[email]" value="Email">
-                                <label>Email</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="prefer[telephone]" value="Telephone">
-                                <label>Telephone</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="prefer[message]" value="Message">
-                                <label>Message</label>
-                            </li>
-                        </ul>
-                        <ul class="user_info">
-                            <li class="single_field zip-field">
-                                <label>Name * :</label>
-                                <input type="text" name="name" required>
-                            </li>
-                            <li class="single_field zip-field">
-                                <label>Email * :</label>
-                                <input type="email" name="email" required>
-                            </li>
-                            <li class="single_field zip-field">
-                                <label>Telephone * :</label>
-                                <input type="text" name="telephone" required>
-                            </li>
-                            <li class="single_field zip-field" style="width: 96%;">
-                                <br>
-                                <label>Address * :</label>
-                                <input type="text" name="address" required>
-                            </li>
-                        </ul>
-                        <div style="margin: 20px 25px 15px 40px;">
-                            <label>Message :</label>
-                            <textarea name="message"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-default check_out">Trimite comanda</button>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="total_area">
-                        <ul>
-                            <?php if (!empty($general->address)) { ?>
-                                <li>Address <span><?php echo $general->address; ?></span></li>
-                            <?php } ?>
-
-                            <?php if (!empty($general->telephone)) { ?>
-                                <li>Telephone <span><?php echo $general->telephone; ?></span></li>
-                            <?php } ?>
-
-                            <?php if (!empty($general->mobile)) { ?>
-                                <li>Mobile <span><?php echo $general->mobile; ?></span></li>
-                            <?php } ?>
-
-                            <?php if (!empty($general->email)) { ?>
-                                <li>Email <span><?php echo $general->email; ?></span></li>
-                            <?php } ?>
-
-                            <?php if (!empty($general->delivery)) { ?>
-                                <li>Livrare <span><?php echo $general->delivery; ?></span></li>
-                            <?php } ?>
-
-                            <li>Total <span class="total">N / A</span></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-12 col-xs-12 col-sm-12 align-right" >
+                    <button type="submit" class="btn btn-default check_out">Trimite comanda</button>
                 </div>
             </div>
+
         </div>
-    </section>
-</form>
+    </form>
+</div>

@@ -70,5 +70,42 @@ $(document).ready(function(){
       }
   });
     //get data to show cart
-    
-})
+    var option = {
+        type: 'POST',
+        url: '/products/getCart',
+        dataType: 'json',
+        data: $('#frm-book').serialize(),
+        success:  function(data) {
+            if(data !== undefined && data.result != undefined && data.result == 0)
+                show_data_cart({});
+            else
+                show_data_cart(data.data);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+        }
+    };
+    $.ajax(option);
+});
+function show_data_cart(data_json) {
+    $('#shopping-cart').empty();
+    if(jQuery.isEmptyObject(data_json)){
+        var li = '<li><p>No product in shopping cart</p></li>';
+        $('#shopping-cart').append(li);
+        return;
+    }
+    var total_item = 0;
+    $.each(data_json,function (product_id,arrTotal) {
+        if(!jQuery.isEmptyObject(arrTotal))
+            $.each(arrTotal,function (color,arrColor) {
+                if(!jQuery.isEmptyObject(arrColor))
+                $.each(arrColor,function (size,arrSize) {
+                    var li = '<li><p>'+ arrSize['name']+ ' So luong'+arrSize['quantity']+'</p></li>';
+                    $('#shopping-cart').append(li);
+                    total_item++;
+                });
+
+            });
+    });
+    $('#menu-cart .badge').html(total_item);
+}

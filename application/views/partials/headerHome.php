@@ -66,12 +66,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown" id="menu-cart">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="fa fa-shopping-cart"></span>
                         <span class="badge">0</span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" id="shopping-cart">
                         <li>
                             <p>No product in shopping cart</p>
                         </li>

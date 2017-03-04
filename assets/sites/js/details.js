@@ -156,8 +156,35 @@ function add_to_cart() {
         dataType: 'json',
         data: $('#frm-book').serialize(),
         success:  function(data) {
-            
-            $('#add-success').modal('show');
+            //data = jQuery.parseJSON(data);
+            if(data !== undefined && data.result !== undefined && data.result == 0){
+                if(data.error !==undefined){
+                    $('#frm-invalid .modal-body p').html(data.error);
+                    $("#frm-invalid").modal('show');
+                }
+
+            }else if(data.result !== undefined && data.result == 1){//success
+                var product_id = $('#product-id').val();
+                var product_color = $('#product-color').val();
+                var product_size = $('#product-size').val();
+                var quantity = $('#cb_quantity').val();
+                var data_items = data.data;
+                var str = '';
+                if(data_items[product_id] !== undefined &&
+                    data_items[product_id][product_color] !== undefined &&
+                    data_items[product_id][product_color][product_size] !== undefined){
+                    var arr = data_items[product_id][product_color][product_size];                    
+                    str += arr['name'] + ' color ' + arr['color'] + ' size '+ arr[size];
+
+                }
+                $('#add-success .modal-body p').html(str);
+                $('#add-success').modal('show');
+                show_data_cart(data_items);
+            }else{
+                $('#frm-invalid .modal-body p').html('Co loi xay ra');
+                $("#frm-invalid").modal('show');
+            }
+
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
 

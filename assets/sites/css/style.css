@@ -1142,3 +1142,28 @@ img.select{
 .modal {
     top: 20% !important;
 }
+.price, .align-right{
+    text-align: right;
+}
+.user-info input{
+    width: 100%;
+}
+.user-info .row{
+    padding: 10px 0;
+}
+.fnt-16{
+    font-size: 18px;
+}
+.red{
+    color:#990000;
+}
+#checkout-page .row-chan{
+    background-color: #F5F5DC;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+#checkout-page .row-le{
+    background-color: #ffffff;
+    padding: 10px 0;
+    margin: 10px 0;
+}

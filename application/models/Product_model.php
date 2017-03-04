@@ -67,6 +67,10 @@ class Product_model extends CI_Model {
         return end($data);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function update_views($id)
     {
         $query = $this->db->get_where($this->table, ['id' => $id]);
@@ -220,7 +224,7 @@ class Product_model extends CI_Model {
         }
         if (empty($this->image)) unset($this->image);
         $this->db->update($this->table, $this, "id = ".$_POST['id']);
-        if($list->isEmpty() && $_POST['id']){
+        if($_POST['id']){
             //update color image
             $this->updateColorImage($_POST['id']);
         }
@@ -245,6 +249,25 @@ class Product_model extends CI_Model {
     public function save(){
         $this->db->update($this->table, $this, "id = ".$this->id);
     }
-        
+
+    /**
+     * @param $productId
+     * @return string
+     */
+    public function getName($productId){
+        $product = $this->get_data_by_id($productId);
+        if($product)
+            return $product->name;
+        return '';
+    }
+
+    /**
+     * @param $value
+     * @param int $heigth
+     * @return string
+     */
+    public static function getPathImage($value,$heigth = 60){
+        return site_url('img.php?src='.PATH_IMAGE_PRODUCT.$value.'&h='.$heigth);
+    }
 
 }

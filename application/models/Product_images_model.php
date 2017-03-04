@@ -85,4 +85,35 @@ class Product_images_model extends CI_Model {
         $this->value = $data->value;
         $this->color = $data->color;
     }
+
+    /**
+     * @param null $product_id
+     * @param null $color
+     * @return mixed
+     */
+    public function get_data_by_id_color($product_id = null, $color = null)
+    {
+        $where_array = '';
+        if (isset($product_id) && isset($color)) {
+            $where_array = ['product' => (int) $product_id,'color' =>  $color];
+        }
+
+        $query = $this->db->get_where($this->table, $where_array);
+
+        $data = $query->result();
+
+        return $data;
+    }
+
+    /**
+     * @param $product_id
+     * @param $color
+     * @return string
+     */
+    public function getImageColor($product_id, $color){
+        $data = $this->get_data_by_id_color($product_id, $color);
+        if($data)
+            $data->value;
+        return '';
+    }
 }

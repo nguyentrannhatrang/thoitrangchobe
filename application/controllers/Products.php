@@ -206,13 +206,17 @@ class Products extends Frontend
             }
         }
 
-        $this->load->view('partials/header', $this->data);
+        $this->load->view('partials/headerHome', $this->data);
         $this->load->view('cart', $this->data);
-        $this->load->view('partials/footer', $this->data);
+        $this->load->view('partials/footerHome', $this->data);
     }
 
+    /**
+     * 
+     */
     public function addCart()
     {
+        global $ARRAY_COLOR,$ARRAY_SIZE;
         $productId = isset($_POST['product-id'])?$_POST['product-id']:'';
         $color = isset($_POST['product-color'])?$_POST['product-color']:'';
         $size = isset($_POST['product-size'])?$_POST['product-size']:'';
@@ -221,22 +225,41 @@ class Products extends Frontend
             echo  json_encode(array('result'=> 0,'error'=>'Dữ liệu không đúng'));
             return;
         }
-
-        $this->data['products'] = array();
-        if (!empty($this->data['cart'])) {
-            foreach ($this->data['cart'] as $p) {
-                if (!empty($p['id']) && !empty($p['quantity'])) {
-                    $product = $this->product_model->get_data_by_id($p['id']);
-                    if (!empty($product)) {
-                        $product->quantity = $p['quantity'];
-                        $this->data['products'][$product->id] = $product;
-                    }
-                }
+        $dataCart = $this->session->userdata('cart');
+        if(is_null($dataCart)) $dataCart = array();
+        if(isset($dataCart[$productId]) &&
+            isset($dataCart[$productId][$color]) &&
+            isset($dataCart[$productId][$color][$size]))
+            $dataCart[$productId][$color][$size]['quantity'] += (int)$quantity;
+        else{
+            $product = $this->product_model->get_data_by_id($productId);
+            if($product){
+                if(!isset($dataCart[$productId])) $dataCart[$productId] = array();
+                if(!isset($dataCart[$productId][$color])) $dataCart[$productId][$color] = array();
+                if(!isset($dataCart[$productId][$color])) $dataCart[$productId][$color][$size] = array();
+                $productName = $product->name;
+                $price = $product->price;
+                $image = $this->product_images_model->getImageColor($productId,$color);
+                $url = Product_model::getPathImage($image,80);
+                $itemCart = [
+                    'color'=>$ARRAY_COLOR[$color],
+                    'size'=>$ARRAY_SIZE[$size],
+                    'quantity'=>$quantity,
+                    'name'=>$productName,
+                    'price'=>$price,
+                    'url'=>$url
+                ];
+                $dataCart[$productId][$color][$size] = $itemCart;
             }
         }
-
-        $this->load->view('partials/header', $this->data);
-        $this->load->view('cart', $this->data);
-        $this->load->view('partials/footer', $this->data);
+        $this->session->set_userdata('cart',$dataCart);
+        echo json_encode(array('result'=>1,'data'=>$dataCart));
+        return;
+    }
+    public function getCart(){
+        $dataCart = $this->session->userdata('cart');
+        echo json_encode(array('result'=>empty($dataCart)?0:1,'data'=>$dataCart));
+        return;
+        
     }
 }
