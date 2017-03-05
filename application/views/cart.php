@@ -9,6 +9,17 @@
                     </ol>
                 </div>
             </div>
+            <?php foreach ($items as $$product => $dataColor) {
+                foreach ($dataColor as $color => $dataSize) {
+                    foreach ($dataSize as $size => $data) {
+                        # code...
+                    }
+                    # code...
+                }
+                # code...
+            } ?>
+
+
             <div class="row row-chan">
                 <div class="col-lg-3 col-xs-12 col-sm-12">
                     <img src="http://shop.local/img.php?src=uploads/product/810-pink-shirt-thumb.jpg&h=120" width="80px" height="120px"/>

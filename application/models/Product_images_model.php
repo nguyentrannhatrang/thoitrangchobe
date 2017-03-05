@@ -112,8 +112,10 @@ class Product_images_model extends CI_Model {
      */
     public function getImageColor($product_id, $color){
         $data = $this->get_data_by_id_color($product_id, $color);
-        if($data)
-            $data->value;
+        if($data && isset($data[0])){
+            $data = $data[0];
+            return $data->value;        
+        }
         return '';
     }
 }

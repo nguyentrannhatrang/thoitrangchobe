@@ -205,6 +205,11 @@ class Products extends Frontend
                 }
             }
         }
+        $dataCart = $this->session->userdata('cart');
+        if(empty($dataCart)){
+            redirect('/');
+        }
+        $this->data['items'] = $dataCart;
 
         $this->load->view('partials/headerHome', $this->data);
         $this->load->view('cart', $this->data);
@@ -241,13 +246,15 @@ class Products extends Frontend
                 $price = $product->price;
                 $image = $this->product_images_model->getImageColor($productId,$color);
                 $url = Product_model::getPathImage($image,80);
+                $linkProduct = site_url(url_title($product->name).'-'.$product->id);
                 $itemCart = [
                     'color'=>$ARRAY_COLOR[$color],
                     'size'=>$ARRAY_SIZE[$size],
                     'quantity'=>$quantity,
                     'name'=>$productName,
                     'price'=>$price,
-                    'url'=>$url
+                    'url'=>$url,
+                    'link'=>$linkProduct
                 ];
                 $dataCart[$productId][$color][$size] = $itemCart;
             }

@@ -130,6 +130,17 @@ function render_quantity(quantity) {
                 .text(i));
     }
 }
+
+function html_item_modal(){
+    return '<div class="row">'+
+    '<div class="col-lg-3"><img src="{url}" heigth="60" width="50"></div>'+
+                  '<div class="col-lg-6">'+
+                    '<p>{name}</p>'+
+                    '<p>{color}</p>'+
+                    '<p>{size}</p>'+
+                  '</div>'+
+                  '<div class="col-lg-3">{quantity} x {price}</div></div>';
+}
 function add_to_cart() {
     //check valid
     if($('#product-id').val() == ''){
@@ -173,11 +184,17 @@ function add_to_cart() {
                 if(data_items[product_id] !== undefined &&
                     data_items[product_id][product_color] !== undefined &&
                     data_items[product_id][product_color][product_size] !== undefined){
-                    var arr = data_items[product_id][product_color][product_size];                    
-                    str += arr['name'] + ' color ' + arr['color'] + ' size '+ arr[size];
+                    var arr = data_items[product_id][product_color][product_size];   
+                    str = html_item_modal();
+                    str = str.replace('{name}',arr['name']);     
+                    str = str.replace('{color}',arr['color']);                 
+                    str = str.replace('{size}',arr['size']);                 
+                    str = str.replace('{url}',arr['url']);
+                    str = str.replace('{quantity}',quantity);
+                    str = str.replace('{price}',arr['price']);                                             
 
                 }
-                $('#add-success .modal-body p').html(str);
+                $('#add-success .modal-body').html(str);
                 $('#add-success').modal('show');
                 show_data_cart(data_items);
             }else{

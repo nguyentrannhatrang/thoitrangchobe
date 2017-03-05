@@ -87,25 +87,63 @@ $(document).ready(function(){
     };
     $.ajax(option);
 });
+function get_li_item_cart(){
+    return '<li class="have-item-cart">'+
+                            '<div class="ty-cart-items__list-item-image">'+
+                                '<span class="hidden icon-83"></span><span class="babi-icon babi-icon-2"></span><img class="ty-pict" src="{image}" width="60" height="60" alt="{alt}" title="{title}">'+
+                            '</div>'+
+                            '<div class="ty-cart-items__list-item-desc">'+
+                                '<a href="{link-product}">{name}</a>'+
+                                '<p>'+
+                                    '<span>{quantity}</span><span>&nbsp;x&nbsp;</span><span id="" class="none">{price}</span>&nbsp;<span class="none">đ</span>'+
+                                '</p>'+
+                            '</div>'+
+                            '<div class="ty-cart-items__list-item-tools cm-cart-item-delete">'+
+                                '<a data-ca-dispatch="delete_cart_item" href="" class="cm-ajax cm-ajax-full-render" data-ca-target-id="cart_status*">'+
+                                    '<i title="Loại bỏ" class="ty-icon-cancel-circle"></i>'+
+                                '</a>'+
+                            '</div>'+
+                        '</li>';
+}
 function show_data_cart(data_json) {
     $('#shopping-cart').empty();
     if(jQuery.isEmptyObject(data_json)){
-        var li = '<li><p>No product in shopping cart</p></li>';
-        $('#shopping-cart').append(li);
+        $('#shopping-cart .have-item-cart').remove();
+        $('#shopping-cart .no-item-cart').removeClass('hide');
+        if(!$('#shopping-cart .button-item-cart').hasClass('hide'))
+            $('#shopping-cart .button-item-cart').addClass('hide');
         return;
     }
+    $('#shopping-cart .no-item-cart').addClass('hide');
+    $('#shopping-cart .button-item-cart').removeClass('hide');
+
+    var str = get_li_item_cart();
     var total_item = 0;
     $.each(data_json,function (product_id,arrTotal) {
         if(!jQuery.isEmptyObject(arrTotal))
             $.each(arrTotal,function (color,arrColor) {
                 if(!jQuery.isEmptyObject(arrColor))
                 $.each(arrColor,function (size,arrSize) {
+                    var html = str;
                     var li = '<li><p>'+ arrSize['name']+ ' So luong'+arrSize['quantity']+'</p></li>';
-                    $('#shopping-cart').append(li);
-                    total_item++;
+                    html = html.replace('{image}',arrSize['url']);
+                    html = html.replace('{alt}','');
+                    html = html.replace('{title}','');
+                    html = html.replace('{name}',arrSize['name']);
+                    html = html.replace('{quantity}',arrSize['quantity']);
+                    html = html.replace('{price}',arrSize['price']);
+                    html = html.replace('{link-product}',arrSize['link']);
+                    $('#shopping-cart').append(html);
+                    total_item += arrSize['quantity'];
                 });
 
             });
     });
+    var str ='<li class="cart-button have-item-cart">'+
+                '<div class="align-right">'+
+                    '<a href="/cart" rel="nofollow" class="ty-btn ty-btn__primary pink-color">Đặt hàng</a>'+
+                '</div>'+
+            '</li>';
+    $('#shopping-cart').append(str);
     $('#menu-cart .badge').html(total_item);
 }

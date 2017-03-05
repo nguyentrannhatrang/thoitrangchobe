@@ -158,15 +158,17 @@
 <div id="add-success" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header pink-color">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"></h4>
+                <h4 class="modal-title">Da them vao gio hang</h4>
             </div>
             <div class="modal-body">                
-                <p></p>
+                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="col-xs-6 col-lg-6 col-sm-6 left align-left payment">
+                <a class="pink-color" href="/cart">Thanh toan</a></div>
+                <div class="col-xs-6 col-lg-6 col-sm-6 right"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
             </div>
         </div>
     </div>
