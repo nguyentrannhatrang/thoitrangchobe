@@ -72,7 +72,23 @@
                         <span class="badge">0</span>
                     </a>
                     <ul class="dropdown-menu" id="shopping-cart">
-                        <li>
+                        <li class="have-item-cart">
+                            <div class="ty-cart-items__list-item-image">
+                                <span class="hidden icon-83"></span><span class="babi-icon babi-icon-2"></span><img class="ty-pict    " src="https://babi.vn/images/thumbnails/60/60/variant_image/42/set-2-non-in-hinh-thu-cho-be-gai_(2).jpg?t=1488539598" width="60" height="60" alt="Trắng hồng - trắng vàng" title="Trắng hồng - trắng vàng">
+                            </div>
+                            <div class="ty-cart-items__list-item-desc">
+                                <a href="https://babi.vn/set-2-non-in-hinh-thu-cho-be-gai-so-sinh.html">Sét 2 nón in hình thú cho bé gái sơ sinh</a>
+                                <p>
+                                    <span>1</span><span>&nbsp;x&nbsp;</span><span id="sec_price_291577855_577" class="none">24.000</span>&nbsp;<span class="none">đ</span>
+                                </p>
+                            </div>
+                            <div class="ty-cart-items__list-item-tools cm-cart-item-delete">
+                                <a data-ca-dispatch="delete_cart_item" href="https://babi.vn/index.php?dispatch=checkout.delete.from_status&amp;cart_id=291577855&amp;redirect_url=index.php%3Fdispatch%3Dproducts.view%26product_id%3D395886" class="cm-ajax cm-ajax-full-render" data-ca-target-id="cart_status*">
+                                    <i title="Loại bỏ" class="ty-icon-cancel-circle"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="no-item-cart">
                             <p>No product in shopping cart</p>
                         </li>
                     </ul>
