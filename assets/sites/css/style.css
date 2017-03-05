@@ -1210,3 +1210,17 @@ img.select{
     background: #ff3399 !important;
     color: #fff;
 }
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+#owl-demo{
+    height: auto;
+}
+.icon-delete{
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}

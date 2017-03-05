@@ -1,5 +1,5 @@
 <!-- intro -->
-<div id="intro" class="intro">
+<!-- <div id="intro" class="intro">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 intro-left wow slideInLeft" data-wow-duration="2s">
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- end intro -->
 <!-- footer-top -->
 <div class="footer-top">
@@ -151,6 +151,7 @@
 <script src="/assets/sites/js/owl.carousel.min.js"></script>
 <script src="/assets/sites/js/wow.min.js"></script>
 <script src="/assets/sites/js/registry.js"></script>
+<script src="/assets/sites/js/accounting.min.js"></script>
 <script src="/assets/sites/js/app.js"></script>
 <script src="/assets/sites/js/details.js"></script>
 </body>

@@ -55,6 +55,14 @@ $(document).ready(function(){
         $("#myModal").modal('show');
     });
 
+    $("#owl-demo").owlCarousel({
+ 
+      navigation : true, // Show next and prev buttons
+      items:6
+ 
+  });
+
+
 });
 function registry_click_size() {
     $('.list-size span').click(function () {

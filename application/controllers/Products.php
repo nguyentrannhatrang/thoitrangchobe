@@ -101,6 +101,9 @@ class Products extends Frontend
         $this->data['size_by_color'] = $aSizeByColor;
         $this->data['color_image'] = $colorImage;
         $this->data['size_name'] = $ARRAY_SIZE;
+        //get list relation
+        $relation = $this->product_model->get_relation_products($this->data['product']->category);
+        $this->data['product_relation'] = $relation;
         $this->load->view('partials/headerHome', $this->data);
         $this->load->view('product', $this->data);
         $this->load->view('partials/footerHome', $this->data);

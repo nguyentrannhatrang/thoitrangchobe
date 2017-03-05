@@ -86,6 +86,13 @@ $(document).ready(function(){
         }
     };
     $.ajax(option);
+    //
+    if($('.format-price').length){
+        $.each($('.format-price'),function(){
+            var price = $(this).find('input').val();
+            $(this).find('strong').text(accounting.format(price,0));
+        });
+    }
 });
 function get_li_item_cart(){
     return '<li class="have-item-cart">'+

@@ -58,6 +58,20 @@ class Product_model extends CI_Model {
         return $data;
     }
 
+
+    public function get_relation_products($category,$limit = 10)
+    {
+        $this->db->select('p.*');
+        $this->db->from($this->table.' p');
+        $this->db->where('p.category', $category);
+        $this->db->limit($limit);
+        $query = $this->db->get();
+
+        $data = $query->result();
+
+        return $data;
+    }
+
     public function get_data_by_id($id)
     {
         $query = $this->db->get_where($this->table, ['id' => $id]);

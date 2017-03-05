@@ -109,11 +109,16 @@
                                     <i class="fa fa-thumbs-up"></i>
                                 </div>
                                 <div class="left">
-                                    <span>So luong:</span> 1
+                                    <!-- <span>So luong:</span> 1
                                     <br/>
                                     <span>Mau</span> Do
                                     <br/>
-                                    <span>Size</span> X
+                                    <span>Size</span> X -->
+                                    <div class="format-price">
+                                    <input type="hidden" name="" value="<?php echo $product->price; ?>" />
+                                      <strong class="price"></strong>  
+                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -135,7 +140,9 @@
         </div>
     </div>
 </div>
-<div class="row" style="text-align: center">
+<div class="row multi-tabs">
+    <div>
+        <div class="row" style="text-align: center">
 
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -148,6 +155,41 @@
     <div class="fb-comments" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-width="500" data-numposts="5"></div>
 </div>
 <div class="fb-like" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+    </div>
+</div>
+<div class="row relative-product">
+<div class="col-lg-1"></div>
+    <div class="col-lg-10">
+       <div id="owl-demo" class="owl-carousel owl-theme">
+ 
+ <?php foreach ($product_relation as $key => $product) {
+     # code...
+ } ?>
+          <div class="item">
+           <div class="container-overlay">
+                <a href="#" title="" class="img-product">
+                    <img src="mg src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$product->image.'&h=200'); ?>" alt="<?php echo $product->name; ?>">            
+                </a>
+                <div class="price-box ">
+                    <a href="<?php echo site_url(url_title($product->name).'-'.$product->id); ?>">
+                        <h3><?php echo $product->name; ?></h3>
+                    </a>
+                    <p>
+                                    </p>
+                    <ul class="list-unstyled list-inline wow lightSpeedIn" >                        
+                        <li>
+                            <p><strong><?php echo $product->price; ?></strong></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+     
+    </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<br class="clearfix" />
 <script>
     var size_by_color = '<?php echo json_encode($size_by_color);?>';
     var color_image = '<?php echo json_encode($color_image);?>';

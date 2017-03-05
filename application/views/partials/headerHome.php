@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="/assets/sites/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/sites/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/sites/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/sites/css/style.css"> </head>
+    <link rel="stylesheet" href="/assets/sites/css/style.css"> 
+</head>
 
 <body>
 <!-- begin menu -->

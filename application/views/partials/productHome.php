@@ -33,7 +33,7 @@
             <ul class="list-unstyled list-inline wow lightSpeedIn " data-wow-duration="2s ">
                 <li>
                     <p>
-                        <del>$20.00</del>
+                        <del><?php echo $product->price; ?></del>
                     </p>
                 </li>
                 <li>
