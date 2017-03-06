@@ -141,7 +141,7 @@ function show_data_cart(data_json) {
                     html = html.replace('{price}',arrSize['price']);
                     html = html.replace('{link-product}',arrSize['link']);
                     $('#shopping-cart').append(html);
-                    total_item += arrSize['quantity'];
+                    total_item += parseInt(arrSize['quantity']);
                 });
 
             });

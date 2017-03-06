@@ -20,10 +20,10 @@ $(document).ready(function(){
         $('#thumb-img').attr('title',$(this).attr('title'));
     });
 
-    if(size_by_color !== undefined){
+    if(typeof size_by_color !== 'undefined'){
         var color_size = jQuery.parseJSON(size_by_color);
         var url_color = null;
-        if(color_image !== undefined)
+        if(typeof color_image !== 'undefined')
             url_color = jQuery.parseJSON(color_image);
         $('.list-color').html('');
         var first = '';
@@ -36,7 +36,7 @@ $(document).ready(function(){
             }
             else
                 html = html.replace('{select}','');
-            if(url_color && url_color[color] !== undefined){
+            if(url_color && typeof url_color[color] !== 'undefined'){
                 var img_color = url_color[color];
                 html = html.replace('{src}',img_color['url']);
                 html = html.replace(/@alt@/g,img_color['alt']);
@@ -80,9 +80,9 @@ function registry_click() {
         $(this).addClass('select');
         render_size($(this).attr('id'));
         var url_color = null;
-        if(color_image !== undefined)
+        if(typeof color_image !== 'undefined')
             url_color = jQuery.parseJSON(color_image);
-        if(url_color && url_color[$(this).attr('id')] !== undefined && url_color[$(this).attr('id')]['alt'] !== undefined){
+        if(url_color && typeof url_color[$(this).attr('id')] !== 'undefined' && typeof url_color[$(this).attr('id')]['alt'] !== 'undefined'){
             $('#selected_color').text(url_color[$(this).attr('id')]['alt']);
         }
 
@@ -90,13 +90,13 @@ function registry_click() {
     registry_click_size();
 }
 function render_size(color) {
-    if(size_by_color !== undefined) {
+    if(typeof size_by_color !== 'undefined') {
         $('.list-size').html('');
         var size_with_name = null;
-        if(size_name !== undefined)
+        if(typeof size_name !== 'undefined')
             size_with_name = jQuery.parseJSON(size_name);
         var color_size = jQuery.parseJSON(size_by_color);
-        if(color_size[color] !== undefined){
+        if(typeof color_size[color] !== 'undefined'){
             var first = true;
             $.each(color_size[color],function(size,quantity){
                 var html = '<span class="{selected}" id="{size}" title="">{size-name}</span>';
@@ -120,9 +120,9 @@ function set_quantity() {
     var size = $('.list-size .selected').attr('id');
     var color = $('.list-color .select').attr('id');
     if(size && color){
-        if(size_by_color !== undefined) {
+        if(typeof size_by_color !== 'undefined') {
             var color_size = jQuery.parseJSON(size_by_color);
-            if(color_size[color] !== undefined && color_size[color][size] !== undefined ){
+            if(typeof color_size[color] !== 'undefined' && typeof color_size[color][size] !== 'undefined' ){
                 render_quantity(parseInt(color_size[color][size]));
             }
         }
@@ -176,22 +176,22 @@ function add_to_cart() {
         data: $('#frm-book').serialize(),
         success:  function(data) {
             //data = jQuery.parseJSON(data);
-            if(data !== undefined && data.result !== undefined && data.result == 0){
-                if(data.error !==undefined){
+            if(typeof data !== 'undefined' && typeof data.result !== 'undefined' && data.result == 0){
+                if(typeof data.error !=='undefined'){
                     $('#frm-invalid .modal-body p').html(data.error);
                     $("#frm-invalid").modal('show');
                 }
 
-            }else if(data.result !== undefined && data.result == 1){//success
+            }else if(typeof data.result !== 'undefined' && data.result == 1){//success
                 var product_id = $('#product-id').val();
                 var product_color = $('#product-color').val();
                 var product_size = $('#product-size').val();
                 var quantity = $('#cb_quantity').val();
                 var data_items = data.data;
                 var str = '';
-                if(data_items[product_id] !== undefined &&
-                    data_items[product_id][product_color] !== undefined &&
-                    data_items[product_id][product_color][product_size] !== undefined){
+                if(typeof data_items[product_id] !== 'undefined' &&
+                    typeof data_items[product_id][product_color] !== 'undefined' &&
+                    typeof data_items[product_id][product_color][product_size] !== 'undefined'){
                     var arr = data_items[product_id][product_color][product_size];   
                     str = html_item_modal();
                     str = str.replace('{name}',arr['name']);     

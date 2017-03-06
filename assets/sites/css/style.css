@@ -1224,3 +1224,11 @@ img.select{
     padding: 5px;
     cursor: pointer;
 }
+.product-name{
+    font-size: 20px;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+#frm-checkout{
+    margin-bottom: 25px;
+}

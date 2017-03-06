@@ -154,6 +154,7 @@
 <script src="/assets/sites/js/accounting.min.js"></script>
 <script src="/assets/sites/js/app.js"></script>
 <script src="/assets/sites/js/details.js"></script>
+<script src="/assets/sites/js/checkout.js"></script>
 </body>
 
 </html>

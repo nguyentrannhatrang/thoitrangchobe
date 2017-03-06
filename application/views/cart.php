@@ -1,5 +1,5 @@
 <div id="checkout-page">
-    <form method="post" id="frm-checkout" action="<?php echo site_url('products/checkout'); ?>">
+    <form method="post" id="frm-checkout" action="<?php echo site_url('checkout/submit'); ?>">
         <div class="container">
             <div class="row">
                 <div class="breadcrumbs">
@@ -9,31 +9,37 @@
                     </ol>
                 </div>
             </div>
-            <?php $row = 0 ?>
+            <?php $row = 0; $totalPrice = 0; ?>
             <?php foreach ($items as $product => $dataColor) {
                 foreach ($dataColor as $color => $dataSize) {
                     foreach ($dataSize as $size => $data) {?>
-                        <div class="row <?php $row%2==0?'row-chan':'row-le';$row++; ?>" id="<?php echo $product.'-'.$color.'-'.$size; ?>">
+                        <div class="row-item row <?php echo ($row%2==0?'row-chan':'row-le');$row++; ?>" id="<?php echo $product.'-'.$color.'-'.$size; ?>">
                             <div class="col-lg-3 col-xs-12 col-sm-12">
                                 <img src="<?php echo $data['url']?>" width="80px" height="120px"/>
                             </div>
                             <div class="col-lg-6 col-xs-12 col-sm-12">
-                                <strong><?php echo $data['name']; ?></strong>
-                                <p><?php echo $data['color']; ?></p>
-                                <p><?php echo $data['size']; ?></p>
-                                <p>
-                                    <select name="quantity[<?php echo $product.'-'.$color.'-'.$size; ?>]">
-                                        <?php for ($i=1; $i<=$data['quantity'] ; $i++) { ?>   
-                                        <option value="<?php echo $i;?>" <?php $i ==$data['quantity']?'selected':'';?>> <?php echo $i;?></option>
-                                        <?php } ?>
-                                    </select>
+                                <p class="product-name">
+                                <strong ><?php echo $data['name']; ?></strong>
                                 </p>
+                                <p>Màu sắc: <?php echo $data['color']; ?></p>
+                                <p>Cỡ size: <?php echo $data['size']; ?></p>
+                                <p>Số lượng: <?php echo $data['quantity']; ?></p>
+                                <!--<p>
+                                    <select name="quantity[<?php /*echo $product.'-'.$color.'-'.$size; */?>]">
+                                        <?php /*for ($i=1; $i<=$data['quantity'] ; $i++) { */?>
+                                        <option value="<?php /*echo $i;*/?>" <?php /*$i ==$data['quantity']?'selected':'';*/?>> <?php /*echo $i;*/?></option>
+                                        <?php /*} */?>
+                                    </select>
+                                </p>-->
                             </div>
                             <div class="col-lg-3 col-xs-12 col-sm-12 price">
-                            <div class="icon-delete"><span class="id-delete hide"><?php echo $product.'-'.$color.'-'.$size; ?></span>
-                            <i class="fa fa-times" aria-hidden="true"></i></div>
+                            <div class="icon-delete hide" id="delete-<?php echo $product.'-'.$color.'-'.$size; ?>">
+                                <span class="id-delete hide"><?php echo $product.'-'.$color.'-'.$size; ?></span>
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
                                 <div class="format-price">
                                     <input type="hidden" value="<?php echo $data['price']*$data['quantity']; ?>">
+                                    <?php $totalPrice += (float)($data['price']*$data['quantity']); ?>
                                 <strong class="price"> </strong>
                                 </div>
                             </div>
@@ -50,8 +56,9 @@
                         <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
                             Tổng tiền
                         </div>
-                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
-                            2000000
+                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info format-price">
+                            <input type="hidden" value="<?php echo $totalPrice; ?>">
+                            <strong class="price"> </strong>
                         </div>
                     </div>
                 </div>
@@ -102,18 +109,64 @@
                         <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
                             Tổng tiền
                         </div>
-                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info">
-                            2000000
+                        <div class="col-lg-12 col-xs-12 col-sm-12 total-info format-price">
+                            <input type="hidden" value="<?php echo $totalPrice; ?>">
+                            <strong class="price"> </strong>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-xs-12 col-sm-12 align-right" >
-                    <button type="submit" class="btn btn-default " id="check_out">Trimite comanda</button>
+                    <button type="submit" class="btn btn-default " id="check_out">Đặt hàng</button>
                 </div>
             </div>
 
         </div>
     </form>
 </div>
+<div id="popup-delete-confirm" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Xác nhận</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Bạn có chắc muốn xóa?
+                </p>
+                <input type="hidden" id="confirm-id-delete" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btnbtn-primary" id="btn-delete" data-dismiss="modal">Đồng ý</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup-error" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Lỗi</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    
+                </p>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    <?php
+        if($this->session->flashdata('error') != '') {?>
+    var error_text = "<?php echo $this->session->flashdata('error') ; ?>";
+    <?php }
+    ?>
+</script>

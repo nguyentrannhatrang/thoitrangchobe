@@ -91,7 +91,7 @@
 </nav>
 <!-- end menu -->
 <!-- slider -->
-<div class="slider">
+<!--<div class="slider">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class=""></li>
@@ -128,5 +128,5 @@
         <a class="right carousel-control" href="#myCarousel" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
-</div>
+</div>-->
 <!-- end slider -->

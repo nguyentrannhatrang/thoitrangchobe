@@ -69,4 +69,33 @@ class Product_detail_model extends CI_Model {
 
         return (boolean) $query;
     }
+
+    public function reduceQuantity($product_id = null,$color = null,$size = null){
+        $data = $this->get_data_by_product_color_size($product_id,$color,$size);
+        //if()
+    }
+
+    /**
+     * @param null $product_id
+     * @param null $color
+     * @param null $size
+     * @return $this
+     */
+    public function getObjectDetail($product_id = null,$color = null,$size = null){
+        $data = $this->get_data_by_product_color_size($product_id,$color,$size);
+        if($data && isset($data[0]))
+            $this->convertToModel($data[0]);
+        return $this;
+    }
+
+    /**
+     * @param $data
+     */
+    public function convertToModel($data){
+        $this->product = $data->product;
+        $this->color = $data->color;
+        $this->size = $data->size;
+        $this->quantity = $data->quantity;
+    }
+
 }

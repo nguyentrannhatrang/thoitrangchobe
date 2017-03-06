@@ -196,7 +196,7 @@ class Products extends Frontend
 
     public function cart()
     {
-        $this->data['products'] = array();
+        /*$this->data['products'] = array();
         if (!empty($this->data['cart'])) {
             foreach ($this->data['cart'] as $p) {
                 if (!empty($p['id']) && !empty($p['quantity'])) {
@@ -207,7 +207,7 @@ class Products extends Frontend
                     }
                 }
             }
-        }
+        }*/
         $dataCart = $this->session->userdata('cart');
         if(empty($dataCart)){
             redirect('/');
