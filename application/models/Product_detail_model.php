@@ -1,5 +1,10 @@
 <?php
 class Product_detail_model extends CI_Model {
+
+    public $product;
+    public $color;
+    public $size;
+    public $quantity;
     private $table = 'product_detail';
 
     public function __construct()

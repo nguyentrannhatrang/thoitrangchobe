@@ -24,6 +24,9 @@
  * @property Offer_model $offer_model
  * @property Product_images_model $product_images_model
  * @property Product_detail_model $product_detail_model
+ * @property Booking_model $booking_model
+ * @property Booking_detail_model $booking_detail_model
+ * @property Traveller_model $traveller_model
  *
  *
  */

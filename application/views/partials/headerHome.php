@@ -19,7 +19,7 @@
 
 <body>
 <!-- begin menu -->
-<nav class="navbar menu" data-spy="affix" data-offset-top="550">
+<nav class="navbar menu" data-spy="affix" data-offset-top="150">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -33,21 +33,21 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" title="">HOME</a></li>
+                <li><a href="/" title="">HOME</a></li>
                 <li class="dropdown">
-                    <a href="#" title="" class="dropbtn">PRODUCTS
+                    <a href="#" title="" class="dropbtn">Sản Phẩm
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <div class="dropdown-content wow fadeInUp">
                         <a href="#feature-product" title="">FEATURE PRODUCTS</a>
-                        <!--<a href="#men-product" title="">MEN PRODUCTS</a>
+                        <a href="#men-product" title="">MEN PRODUCTS</a>
                         <a href="#women-product" title="">WOMEN PRODUCTS</a>
-                        <a href="#other-product" title="">OTHER PRODUCTS</a>-->
+                        <a href="#other-product" title="">OTHER PRODUCTS</a>
                     </div>
                 </li>
                 <!--<li><a href="#sale" title="">SALE</a></li>-->
-                <li><a href="#intro" title="">SHIPPING</a></li>
-                <li><a href="#contact" title="">CONTACT</a></li>
+               <!-- <li><a href="#intro" title="">SHIPPING</a></li>
+                <li><a href="#contact" title="">CONTACT</a></li>-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-search"></i>

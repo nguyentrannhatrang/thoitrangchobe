@@ -72,8 +72,9 @@ class Checkout extends Frontend
 			if (!empty($email) && !empty($telephone) && !empty($name) && !empty($dataCart)) {
 				$this->load->library('email');
 				$order_array = [];
-
-				// Procesarea contentului
+				/** @var Traveller_model $traveller */
+				$traveller = clone $this->traveller_model;
+				//
 				$content = 'Tên khách hàng ' . $name . "\n";
 				$content .= 'Email: ' . $email . "\n";
 				$content .= 'Sđt: ' . $telephone . "\n";
@@ -81,8 +82,13 @@ class Checkout extends Frontend
 				$content .= 'Tin nhắn: ' . $message . "\n\n";
 
 				$content .= "\nComanda: \n\n";
+				$traveller->address = $address;
+				$traveller->email = $email;
+				$traveller->phone = $telephone;
+				$traveller->name = $name;
 				$total = 0;
 				$arrReduce = array();
+				$aDetails = array();
 				foreach ($dataCart as $productId=>$arrColor){
 					foreach ($arrColor as $colorId=>$arrSize){
 						foreach ($arrSize as $sizeId=>$item) {
@@ -105,8 +111,22 @@ class Checkout extends Frontend
 								redirect('cart');
 								return;
 							}
+							$productDetail->quantity -= (int)$item['quantity'];
+							$arrReduce[] = $productDetail;
 							//reduce quantity
-							$arrReduce[] = array('product'=>$productId,'color'=>$colorId,'size'=>$sizeId,'quantity'=>$item['quantity']);
+							//$arrReduce[] = array('product'=>$productId,'color'=>$colorId,'size'=>$sizeId,'quantity'=>$item['quantity']);
+							/** @var Booking_detail_model $modelDetail */
+							$modelDetail = clone $this->booking_detail_model;
+							$modelDetail->color = $colorId;
+							$modelDetail->size = $sizeId;
+							$modelDetail->product_name = $product_db->name;
+							$modelDetail->quantity = $item['quantity'];
+							$modelDetail->product = $productId;
+							$modelDetail->price = $product_db->price;
+							$modelDetail->total = $product_total;
+							$modelDetail->status = Booking_detail_model::STATUS_CONFIRM;
+							$aDetails[] = $modelDetail;
+
 							
 						}
 					}
@@ -114,13 +134,13 @@ class Checkout extends Frontend
 				$content .= "\nTotal: " . $total . ' Lei';
 
 				
-				$order_array['name'] = $name;
+				/*$order_array['name'] = $name;
 				$order_array['email'] = $email;
 				$order_array['telephone'] = $telephone;
 				$order_array['address'] = $address;
 				$order_array['message'] = $message;
 				$order_array['content'] = $content;
-				$order_array['total'] = $total;
+				$order_array['total'] = $total;*/
 				// Finisare
 
 
@@ -132,7 +152,45 @@ class Checkout extends Frontend
 				/*$this->email->subject('Comanda de pe site.');
                 $this->email->message($content);
                 */
-				$this->order_model->insert_order($order_array);
+				if(!empty($aDetails)){
+					try{
+						$this->db->trans_start();
+						/** @var Booking_model $booking */
+						$booking = $this->booking_model;
+						$travellerId = $traveller->insert();
+						$booking->user_id = $travellerId;
+						$booking->status = Booking_model::STATUS_CONFIRM;
+						$booking->updateDataFromDetail($aDetails);
+						$booking->message = $message;
+						$bkId = $booking->insert();
+						/** @var Booking_detail_model $itemDetail */
+						foreach ($aDetails as $itemDetail){
+							$itemDetail->bkId = $bkId;
+							$itemDetail->insert();
+						}
+						/** @var Product_detail_model $item */
+						foreach ($arrReduce as $item) {
+							$item->update();
+						}
+						$this->db->trans_complete();
+						$this->db->trans_commit();
+						//send mail
+						$this->send();
+					}catch (\Exception $e){
+						$this->db->trans_rollback();
+						$this->session->set_flashdata('error',
+							'error. try again');
+						redirect('cart');
+						return;
+					}
+
+				}else{
+					$this->session->set_flashdata('error',
+						$product_db->name.', màu '.$ARRAY_COLOR[$colorId].', size '.$ARRAY_SIZE[$sizeId].' không đủ số lượng!');
+					redirect('cart');
+					return;
+				}
+
 				redirect('success');
 				/*if ($this->email->send()) {
                     delete_cookie('products');
@@ -153,4 +211,9 @@ class Checkout extends Frontend
 		}
 
 	}
+
+	private function send(){
+
+	}
+
 }
