@@ -138,25 +138,33 @@
             </div>
             </form>
         </div>
-    </div>
-</div>
-<div class="row multi-tabs">
-    <div>
-        <div class="row" style="text-align: center">
+        <!--description-->
+        <div class="description row">
+            <div class="col-lg-12">
+                <?php echo $product->description; ?>
+            </div>
+        </div>
+        <!--comment-->
+        <br/>
+        <div class="facebook-embed row">
+            <div class="row" style="text-align: center">
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1611276859129198";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-comments" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-width="500" data-numposts="5"></div>
+            </div>
+            <div class="fb-like face-like" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+        </div>
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1611276859129198";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-comments" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-width="500" data-numposts="5"></div>
-</div>
-<div class="fb-like" data-href="http://thoitrangchobe.com.vn/Qun-o-b-gi-85" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
     </div>
+    <!-- container-->
 </div>
+
 <div class="row relative-product">
 <div class="col-lg-1"></div>
     <div class="col-lg-10">

@@ -3,13 +3,10 @@
     <div class="container-overlay">
         <a href="#" title="" class="img-product">
             <img src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$product->image.'&h=340'); ?>" alt="<?php echo $product->name.' | '.$general->logo_text; ?>" class="img-responsive image wow zoomIn" data-wow-duration="2s">
-            <span class="sale-off wow flash" data-wow-duration="1s" data-wow-iteration="10">
-                SALE!
-            </span>
         </a>
         <div class="overlay ">
             <div class="content ">
-                <div class="cart "> <a href="# " title=" "><i class="fa fa-shopping-cart "></i>  Add to Cart</a> </div>
+<!--                <div class="cart "> <a href="# " title=" "><i class="fa fa-shopping-cart "></i>  Add to Cart</a> </div>-->
                 <div class="detail ">
                     <a href="<?php echo site_url(url_title($product->name).'-'.$product->id); ?>" title=" ">
                         <i class="fa fa-file-text-o "></i>
@@ -31,11 +28,6 @@
                 <?php echo $product->short_description; ?>
             </p>
             <ul class="list-unstyled list-inline wow lightSpeedIn " data-wow-duration="2s ">
-                <li>
-                    <p>
-                        <del><?php echo $product->price; ?></del>
-                    </p>
-                </li>
                 <li>
                     <p><strong><?php echo $product->price; ?> <?php if (!empty($general->currency)) echo $general->currency ?></strong></p>
                 </li>

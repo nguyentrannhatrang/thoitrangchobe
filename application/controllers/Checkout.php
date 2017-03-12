@@ -62,6 +62,7 @@ class Checkout extends Frontend
 	public function submit()
 	{
 		global $ARRAY_COLOR,$ARRAY_SIZE;
+		$bkId =0;
 		if (!empty($_POST)) {
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
@@ -190,8 +191,7 @@ class Checkout extends Frontend
 					redirect('cart');
 					return;
 				}
-
-				redirect('success');
+				redirect('success?refno='.$bkId);
 				/*if ($this->email->send()) {
                     delete_cookie('products');
 

@@ -33,7 +33,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/" title="">HOME</a></li>
+                <li><a href="/" title="">Trang Chủ</a></li>
                 <li class="dropdown">
                     <a href="#" title="" class="dropbtn">Sản Phẩm
                         <span class="glyphicon glyphicon-chevron-down"></span>
@@ -45,6 +45,7 @@
                         <a href="#other-product" title="">OTHER PRODUCTS</a>
                     </div>
                 </li>
+                <li><a href="/" title="">Cách chọn</a></li>
                 <!--<li><a href="#sale" title="">SALE</a></li>-->
                <!-- <li><a href="#intro" title="">SHIPPING</a></li>
                 <li><a href="#contact" title="">CONTACT</a></li>-->
