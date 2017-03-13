@@ -100,5 +100,27 @@ class Booking_detail_model extends CI_Model {
         $obj->updated = $data->updated;
         return $obj;
     }
+    /**
+     * @param Booking_detail_model $data
+     * @return array
+     */
+    public function convertToArray($obj){
+        $data = array();
+        $data['id'] = $obj->id;
+        $data['bkId'] = $obj->bkId;
+         $data['product'] = $obj->product;
+         $data['product_name'] = $obj->product_name;
+         $data['price'] = $obj->price;
+         $data['discount'] = $obj->discount;
+         $data['total'] = $obj->total;
+         $data['total_discount'] = $obj->total_discount;
+         $data['quantity'] = $obj->quantity;
+         $data['color'] = $obj->color;
+         $data['size'] = $obj->size;
+         $data['status'] = $obj->status;
+         $data['created'] = $obj->created;
+         $data['updated'] = $obj->updated;
+        return $data;
+    }
 
 }

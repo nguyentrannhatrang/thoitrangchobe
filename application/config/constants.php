@@ -91,3 +91,4 @@ define('EMAIL_SENDER','tadidinguyentrang@gmail.com');
 
 $ARRAY_COLOR = array('xanh'=>'Mau Xanh','do'=>'Mau Do','tim'=>'Mau Tim','vang'=>'Mau Vang');
 $ARRAY_SIZE = array('s'=>'S','m'=>'M','xl'=>'XL','xxl'=>'XXL','xxxl'=>'XXXL','xxxxl'=>'XXXXL','xll'=>'XLL');
+$ARRAY_STATUS_BK = array(0=>'Request',1=>'Confirm',2=>'Cancel',3=>'Completed',4=>'No show');

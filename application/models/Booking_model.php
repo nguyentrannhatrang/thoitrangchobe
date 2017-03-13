@@ -54,6 +54,46 @@ class Booking_model extends CI_Model {
         return $this->convertToModel(end($data));
     }
 
+    public function get_data_today(){
+        $day = date('j',time());
+        $month = date('n',time());
+        $year = date('Y',time());
+        $today = mktime(0,0,0,$month,$day,$year);
+        return $this->get_data_by_date($today,$today + 86400);
+    }
+
+    public function get_data_yesterday(){
+        $day = date('j',time());
+        $month = date('n',time());
+        $year = date('Y',time());
+        $today = mktime(0,0,0,$month,$day,$year);
+        return $this->get_data_by_date($today - 86400,$today);
+    }
+
+    public function get_data_week(){
+        $day = date('j',time());
+        $month = date('n',time());
+        $year = date('Y',time());
+        $today = mktime(0,0,0,$month,$day,$year);
+        return $this->get_data_by_date($today - (7 * 86400),$today + 86400);
+    }
+    /**
+     * @param $date
+     * @return array
+     */
+    public function get_data_by_date($from,$to)
+    {
+        $query = $this->db->order_by('created', 'DESC')->get_where($this->table, ['created >=' => (int)$from,'created <=' => (int)$to]);
+
+        $data = $query->result();
+        $result = array();
+        if(!empty($data))
+            foreach ($data as $_data){
+                $result[] =$this->convertToModel($_data);
+            }
+        return $result;
+    }
+
     /**
      * @return bool
      */
@@ -121,6 +161,24 @@ class Booking_model extends CI_Model {
         $this->total = $total;
         $this->quantity = $quantity;
         return $this;
+    }
+
+    /**
+     * @param Booking_model $obj
+     * @return array
+     */
+    public function convertToArray($obj){
+        $data = array();
+        $data['id'] = $obj->id;
+        $data['user_id'] = $obj->user_id;
+        $data['payment'] = $obj->payment;
+        $data['quantity'] = $obj->quantity;
+        $data['status'] = $obj->status;
+        $data['total'] = $obj->total;
+        $data['message'] = $obj->message;
+        $data['updated'] = $obj->updated;
+        $data['created'] = $obj->created;
+        return $data;
     }
 
 }

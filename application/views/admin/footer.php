@@ -6,5 +6,6 @@
                 <script src="/assets/js/bootstrap.min.js"></script>
                 <script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
                 <script src='/assets/admin/js/product_desc.js'></script>
+                <script src='/assets/admin/js/booking_item.js'></script>
 </body>
 </html>

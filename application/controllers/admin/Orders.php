@@ -12,7 +12,24 @@ class Orders extends Admin {
 
     public function index()
     {
-        $this->data['orders'] = $this->order_model->get_data();
+        $type = isset($_POST['filter-date']) && $_POST['filter-date']?$_POST['filter-date']:1;
+        if($type == 3)
+            $bookings = $this->booking_model->get_data_week();
+        elseif($type == 2)
+            $bookings = $this->booking_model->get_data_yesterday();
+        else
+            $bookings = $this->booking_model->get_data_today();
+        $data = array();
+        if($bookings){
+            /** @var Booking_model $booking */
+            foreach ($bookings as $booking){
+                /** @var Traveller_model $traveller */
+                $traveller = $this->traveller_model->get_data_by_id($booking->user_id);
+                $data[] = array('booking'=>$booking,'traveller'=>$traveller);
+            }
+        }
+        $this->data['bookings'] = $data;
+        $this->data['search_date'] = $type;
 
         $this->load->view('admin/header', $this->data);
         $this->load->view('admin/orders', $this->data);

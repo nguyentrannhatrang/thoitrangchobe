@@ -82,6 +82,23 @@ class Product_model extends CI_Model {
     }
 
     /**
+     * @return array
+     */
+    public function get_data_all()
+    {
+        $query = $this->db->get_where($this->table, ['active' => 1]);
+
+        $data = $query->result();
+        $result = array();
+        if($data){
+            foreach ($data as $item) {
+                $result[] = $this->convertToModel($item);
+            }
+        }
+        return $result;
+    }
+
+    /**
      * @param $id
      * @return mixed
      */
@@ -282,6 +299,17 @@ class Product_model extends CI_Model {
      */
     public static function getPathImage($value,$heigth = 60){
         return site_url('img.php?src='.PATH_IMAGE_PRODUCT.$value.'&h='.$heigth);
+    }
+
+    private function convertToModel($data){
+        if(empty($data)) return $this;
+        $obj = clone $this;
+        $obj->id = $data->id;
+        $obj->name = $data->name;
+        $obj->category = $data->category;
+        $obj->subcategory_id = $data->subcategory_id;
+        $obj->price = $data->price;
+        return $obj;
     }
 
 }
