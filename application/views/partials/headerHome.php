@@ -11,7 +11,12 @@
 	<meta name="description" content="Thoi trang cho be - dam be gai - quan ao be gai" />
 	<meta http-equiv="content-language" content="vi" />
 	<meta name="keywords" content="Thoi trang cho be" />
-    <link rel="stylesheet" href="/assets/sites/css/app.css">
+<!--    <link rel="stylesheet" href="/assets/sites/css/app.css">-->
+    <style>
+        <?php
+            echo file_get_contents(__DIR__."/../../../assets/sites/css/app.css");
+        ?>
+    </style>
 </head>
 <body>
 <!-- begin menu -->

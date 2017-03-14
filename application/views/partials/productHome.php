@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 item-product">
     <div class="container-overlay">
         <a href="#" title="" class="img-product">
-            <img src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$product->image.'&h=340'); ?>" alt="<?php echo $product->name.' | '.$general->logo_text; ?>" class="img-responsive image wow zoomIn" data-wow-duration="2s">
+            <img src="<?php echo site_url('img.php?src='.PATH_IMAGE_PRODUCT.$product->image.'&h=340'); ?>" alt="<?php echo $product->name.' | '.$general->logo_text; ?>" class="img-responsive image">
         </a>
         <div class="overlay ">
             <div class="content ">
@@ -27,7 +27,7 @@
             <p>
                 <?php echo $product->short_description; ?>
             </p>
-            <ul class="list-unstyled list-inline wow lightSpeedIn " data-wow-duration="2s ">
+            <ul class="list-unstyled list-inline">
                 <li>
                     <p><strong><?php echo $product->price; ?> <?php if (!empty($general->currency)) echo $general->currency ?></strong></p>
                 </li>
