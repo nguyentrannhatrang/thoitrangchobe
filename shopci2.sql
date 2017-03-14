@@ -45,7 +45,7 @@ CREATE TABLE `admins` (
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `category_description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `category_image` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -77,11 +77,11 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `customers_details` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(80) NOT NULL,
   `phone` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE `orders` (
   `user_id` int(11) DEFAULT NULL,
   `order_array` text,
   `processed` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
@@ -147,7 +147,7 @@ CREATE TABLE `order_detail` (
   `product_name` varchar(50) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -190,10 +190,10 @@ CREATE TABLE `products` (
   `payment_mode` varchar(255) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int(11) DEFAULT NULL,
-  `description` text,
+  `description` text CHARACTER SET utf8 COLLATE utf8_bin,
   `active` int(11) NOT NULL,
   `date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
@@ -215,7 +215,7 @@ INSERT INTO `products` (`id`, `name`, `category`, `subcategory_id`, `user_id`, `
 CREATE TABLE `searches` (
   `search_id` int(11) NOT NULL,
   `search_content` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -227,7 +227,7 @@ CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
   `key` varchar(255) NOT NULL,
   `value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -238,7 +238,7 @@ CREATE TABLE `settings` (
 CREATE TABLE `subscriptions` (
   `id_subscriptions` int(11) NOT NULL,
   `mails` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -273,7 +273,7 @@ CREATE TABLE `users` (
   `address` varchar(255) DEFAULT NULL,
   `ip` varchar(15) NOT NULL,
   `date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -294,7 +294,7 @@ CREATE TABLE `wishlist` (
   `product_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `username` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables

@@ -25,7 +25,7 @@ ALTER TABLE `product_images`
   `quantity` int(5) NOT NULL,
   `status` int(1) NOT NULL,
   `total` float NOT NULL,
-  `message` TEXT NOT NULL,
+  `message` TEXT CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `updated` int(10) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
@@ -35,7 +35,7 @@ CREATE TABLE `booking_detail`(
   `id` int(11) NOT NULL AUTO_INCREMENT ,
   `bkId` int(11) NOT NULL,
   `product` int(11) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
+  `product_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `color` varchar(20) NOT NULL,
   `size` varchar(10) NOT NULL,
   `quantity` int(5) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `booking_detail`(
 
 CREATE TABLE `traveller`(
   `id` int(11) NOT NULL AUTO_INCREMENT ,
-  `name` varchar(100),
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin,
   `email` varchar(100),
   `phone` varchar(20),
   `address` varchar(255),
