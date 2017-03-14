@@ -1,7 +1,8 @@
-RewriteEngine On
+RewriteEngine on
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ index.php?/$1 [L]
 #Gzip
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/javascript
