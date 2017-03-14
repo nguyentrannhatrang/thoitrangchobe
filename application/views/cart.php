@@ -2,6 +2,12 @@
     <form method="post" id="frm-checkout" action="<?php echo site_url('checkout/submit'); ?>">
         <div class="container">
             <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <h2 class="wow bounceInDown" data-wow-duration="2s">Checkout</h2>
+                    <div class="border"></div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo site_url('/'); ?>">Home</a></li>
