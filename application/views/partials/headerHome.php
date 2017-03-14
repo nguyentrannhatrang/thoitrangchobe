@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Fox Shop</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/sites/css/animate.css">
-    <link rel="stylesheet" href="/assets/sites/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/sites/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/assets/sites/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/sites/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/sites/css/style.css"> 
+	<meta name="robots" content="noodp,index,follow" />
+	<meta name='revisit-after' content='1 days' />
+    <title>Thoi trang cho be</title>
+	<meta name="description" content="Thoi trang cho be - dam be gai - quan ao be gai" />
+	<meta http-equiv="content-language" content="vi" />
+	<meta name="keywords" content="Thoi trang cho be" />
+    <link rel="stylesheet" href="/assets/sites/css/app.css">
 </head>
-
 <body>
 <!-- begin menu -->
 <nav class="navbar menu" data-spy="affix" data-offset-top="150">

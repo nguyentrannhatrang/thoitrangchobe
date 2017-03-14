@@ -146,7 +146,8 @@
     </div>
 </div>
 <!-- end footer-bottom -->
-<script src="/assets/sites/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/sites/js/appsite.all.js"></script>
+<!--<script src="/assets/sites/js/jquery-3.1.1.min.js"></script>
 <script src="/assets/sites/js/bootstrap.min.js"></script>
 <script src="/assets/sites/js/owl.carousel.min.js"></script>
 <script src="/assets/sites/js/wow.min.js"></script>
@@ -154,7 +155,7 @@
 <script src="/assets/sites/js/accounting.min.js"></script>
 <script src="/assets/sites/js/app.js"></script>
 <script src="/assets/sites/js/details.js"></script>
-<script src="/assets/sites/js/checkout.js"></script>
+<script src="/assets/sites/js/checkout.js"></script>-->
 </body>
 
 </html>
