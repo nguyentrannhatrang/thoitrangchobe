@@ -24,10 +24,14 @@ class Booking_model extends CI_Model {
 
     public function insert()
     {
-        $this->created = time();
-        $this->updated = time();
-        $this->db->insert($this->table, $this);
-        return $this->db->insert_id();
+        try{
+            $this->created = time();
+            $this->updated = time();
+            $this->db->insert($this->table, $this);
+            return $this->db->insert_id();
+        }catch (\Exception $e){
+            throw $e;
+        }
     }
 
     public function get_latest($limit = 20, $start = 0)
@@ -179,6 +183,74 @@ class Booking_model extends CI_Model {
         $data['updated'] = $obj->updated;
         $data['created'] = $obj->created;
         return $data;
+    }
+
+    /**
+     * @param Traveller_model $traveller
+     * @param array $aDetails
+     */
+    public function insertAll(Traveller_model $traveller,array $aDetails = array()){
+        $this->db->trans_start();
+        /** @var Booking_model $booking */
+        $booking = $this;
+        $travellerId = $traveller->insert();
+        $booking->user_id = $travellerId;
+        $booking->updateDataFromDetail($aDetails);
+        $bkId = $booking->insert();
+        $arrReduce = array();
+        /** @var Booking_detail_model $itemDetail */
+        foreach ($aDetails as $itemDetail){
+            $itemDetail->id = null;
+            $itemDetail->bkId = $bkId;
+            $itemDetail->insert();
+            $productDetail = new Product_detail_model();
+            $productDetail->getObjectDetail(
+                $itemDetail->product,
+                $itemDetail->color,
+                $itemDetail->size);
+            $productDetail->quantity -= $itemDetail->quantity;
+            $arrReduce[] = $productDetail;
+        }
+        /** @var Product_detail_model $item */
+        foreach ($arrReduce as $item) {
+            $item->update();
+        }
+        $this->db->trans_complete();
+        $this->db->trans_commit();
+    }
+
+    /**
+     * @param Traveller_model $traveller
+     * @param array $aDetails
+     */
+    public function updateAll(Traveller_model $traveller,array $aDetails = array()){
+        $this->db->trans_start();
+        /** @var Booking_model $booking */
+        $booking = $this;
+        $travellerId = $traveller->insert();
+        $booking->user_id = $travellerId;
+        $booking->updateDataFromDetail($aDetails);
+        $bkId = $booking->insert();
+        $arrReduce = array();
+        /** @var Booking_detail_model $itemDetail */
+        foreach ($aDetails as $itemDetail){
+            $itemDetail->id = null;
+            $itemDetail->bkId = $bkId;
+            $itemDetail->insert();
+            $productDetail = new Product_detail_model();
+            $productDetail->getObjectDetail(
+                $itemDetail->product,
+                $itemDetail->color,
+                $itemDetail->size);
+            $productDetail->quantity -= $itemDetail->quantity;
+            $arrReduce[] = $productDetail;
+        }
+        /** @var Product_detail_model $item */
+        foreach ($arrReduce as $item) {
+            $item->update();
+        }
+        $this->db->trans_complete();
+        $this->db->trans_commit();
     }
 
 }

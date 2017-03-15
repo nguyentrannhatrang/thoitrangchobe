@@ -25,7 +25,7 @@ ALTER TABLE `product_images`
   `quantity` int(5) NOT NULL,
   `status` int(1) NOT NULL,
   `total` float NOT NULL,
-  `message` TEXT CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `message` TEXT CHARACTER SET utf8 COLLATE utf8_bin NULL,
   `updated` int(10) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)

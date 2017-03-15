@@ -29,7 +29,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="#" title="" class="navbar-brand logo">
-                <img src="/assets/images/logo.png" alt="logo" class="img-responsive">
+                <img src="/assets/images/logo.png" alt="logo" width="70px" class="img-responsive">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">

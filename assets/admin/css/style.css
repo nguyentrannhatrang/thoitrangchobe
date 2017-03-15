@@ -3,3 +3,19 @@
 #frm-booking .customer div.row{
     margin-bottom: 7px;
 }
+div.div-action{
+    text-align: right;
+}
+div.div-action button{
+    min-width: 120px;
+    margin: 10px;
+}
+.modal-header{
+    background-color: gainsboro;
+}
+.modal-footer{
+    background-color: lightgrey;
+}
+#frm-edit .row{
+    margin: 7px 0px 7px 0px;
+}

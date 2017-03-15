@@ -21,6 +21,7 @@
                     </div>
                     <div>
                         <button value="" type="submit">Search</button>
+                        <a href="/admin/order?refno=0" id="btn-add-new">Add  new</a>
                     </div>
                 </form>
             </div>

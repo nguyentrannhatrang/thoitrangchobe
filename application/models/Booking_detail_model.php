@@ -123,4 +123,8 @@ class Booking_detail_model extends CI_Model {
         return $data;
     }
 
+    public function generateIdNew(){
+        return uniqid('new_');
+    }
+
 }

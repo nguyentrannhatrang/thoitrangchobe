@@ -7,6 +7,7 @@
                 <span class="h4">Booking</span>
             </header>
             <form id="frm-booking" action="" method="post">
+                <input type="hidden" name="refno" value="<?php echo $booking->id; ?>">
                 <div class="row customer">
                     <div class="col-lg-6">
                         <div class="row">
@@ -52,7 +53,12 @@
                                 <label>Status</label>
                             </div>
                             <div class="col-lg-8">
-                                <strong> <?php echo isset($ARRAY_STATUS_BK[$booking->status])?$ARRAY_STATUS_BK[$booking->status]:''; ?></strong>
+                                <select name="booking_status" id="booking_status">
+                                    <?php foreach ($ARRAY_STATUS_BK as $code=>$name) {
+                                        ?>
+                                        <option value="<?php echo $code; ?>" <?php if($booking->status == $code) echo 'selected'; ?>><?php echo $name; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -68,13 +74,14 @@
                                 <label>Total</label>
                             </div>
                             <div class="col-lg-8">
-                                <?php echo $booking->total; ?>
+                                <label class="auto-number" id="total-booking"><?php echo (float)$booking->total; ?></label>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
             <div class="row">
+                <div class="col-lg-12 div-action"><button id="add-item">Them San Pham</button> </div>
                 <div class="col-lg-12">
                     <table class="table m-b-none text-sm">
                         <thead>
@@ -89,7 +96,7 @@
                             <th width="15%"></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="list-items">
                         <?php
                         if ( isset($items) && !empty($items)) { ?>
                             <?php foreach ($items as $item) {
@@ -106,7 +113,7 @@
                                         <?php echo $item->quantity; ?>
                                     </td>
                                     <td><?php echo isset($ARRAY_STATUS_BK[$item->status])?$ARRAY_STATUS_BK[$item->status]:''; ?></td>
-                                    <td><?php echo $item->total; ?></td>
+                                    <td class="auto-number"><?php echo $item->total; ?></td>
                                     <td>
                                         <a href="#" class="edit-item" data-item="<?php echo $item->id; ?>">Edit</a>
                                     </td>
@@ -118,8 +125,11 @@
                 </div>
             </div>
 
-
         </section>
+    </div>
+    <div class="col-lg-12 div-action">
+        <button type="button" class="btn btn-primary" id="btn-save">Save</button>
+        <button type="button" class="btn btn-default" id="btn-close">Close</button>
     </div>
 </div>
 <div id="frm-edit" class="modal fade">
@@ -130,7 +140,7 @@
                 <h4 class="modal-title">Edit</h4>
             </div>
             <div class="modal-body">
-                <form id="frm-edit">
+                <form id="frm-edit-item" name="frm-edit-item">
                     <input type="hidden" value="" name="item_id" id="item_id" />
                 <div class="row">
                     <div class="col-lg-3">Product</div>
@@ -191,7 +201,8 @@
                 <div class="row">
                     <div class="col-lg-3">Price</div>
                     <div class="col-lg-9">
-                        <input type="text" value="" id="price" name="price" />
+                        <input type="text" class="auto-number" value="" id="price"/>
+                        <input type="hidden" value="" id="price-org" name="price" />
                     </div>
                 </div>
                 </form>
@@ -203,3 +214,9 @@
         </div>
     </div>
 </div>
+<script>
+    var arr_color = '<?php echo json_encode($ARRAY_COLOR); ?>';
+    var arr_size = '<?php echo json_encode($ARRAY_SIZE); ?>';
+    var arr_status = '<?php echo json_encode($ARRAY_STATUS_BK); ?>';
+</script>
+    

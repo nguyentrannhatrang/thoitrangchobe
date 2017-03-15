@@ -14,7 +14,7 @@ class Order extends Admin {
     {
         $this->session->unset_userdata('booking_item');
         $refno = $_GET['refno'];
-        if(!$refno) die;
+        //if(!$refno) die;
         /** @var Booking_model $booking */
         $booking = $this->booking_model->get_data_by_id($refno);
         $this->data['traveller'] = $this->traveller_model;
@@ -48,7 +48,7 @@ class Order extends Admin {
     public function editItem()
     {
         $result = $this->booking_detail_model;
-        $bkId = isset($_REQUEST['bkId'])?$_REQUEST['bkId']:'';
+        $bkId = isset($_GET['bkId'])?$_GET['bkId']:'';
         $items = $this->session->userdata('booking_item');
         if($items){
             $items = unserialize($items);
@@ -82,6 +82,7 @@ class Order extends Admin {
             foreach ($items as &$item) {
                 if($item->id == $itemId){
                     $item->product = $product;
+                    $item->product_name = $this->getProductName($product);
                     //set product name
                     $item->color = $color;
                     $item->size = $size;
@@ -91,6 +92,21 @@ class Order extends Admin {
                     $item->total = (float)$price * (int) $quantity;
                     break;
                 }
+            }
+            if(!$itemId){
+                /** @var Booking_detail_model $detail */
+                $detail = clone $this->booking_detail_model;
+                $detail->id = $detail->generateIdNew();
+                $detail->product = $product;
+                $detail->product_name = $this->getProductName($product);
+                //set product name
+                $detail->color = $color;
+                $detail->size = $size;
+                $detail->quantity = $quantity;
+                $detail->status = $status;
+                $detail->price = $price;
+                $detail->total = (float)$price * (int) $quantity;
+                $items[] = $detail;
             }
         }
         $booking->updateDataFromDetail($items);
@@ -108,16 +124,49 @@ class Order extends Admin {
         ));
     }
 
+    /**
+     * @param $productId
+     * @return string
+     */
+    private function getProductName($productId){
+        /** @var Product_model $product */
+        $product = clone $this->product_model;
+        return $product->getName($productId);
+    }
+
     public function save()
     {
-        if (!empty($_POST) && !empty($_POST['id'])) {
-            $this->page_model->update();
-            $this->session->set_flashdata('success', 'Pagina a fost editat cu succes.');
-        } elseif (!empty($_POST)) {
-            $this->page_model->insert();
-            $this->session->set_flashdata('success', 'Pagina a fost adaugat cu succes.');
+        if (!empty($_POST) && !empty($_POST['refno'])) {
+            $items = $this->session->userdata('booking_item');
+            $items = unserialize($items);            
+            $booking = $this->session->userdata('booking');
+            /** @var Booking_model $booking */
+            $booking = unserialize($booking);
+            $traveller = new Traveller_model();
+            $traveller = $traveller->get_data_by_id($booking->user_id);
+            $traveller->name = isset($_POST['customer_name'])?$_POST['customer_name']:'';
+            $traveller->email = isset($_POST['customer_email'])?$_POST['customer_email']:'';
+            $traveller->phone = isset($_POST['customer_phone'])?$_POST['customer_phone']:'';
+            $traveller->address = isset($_POST['customer_address'])?$_POST['customer_address']:'';            
+            $booking->status = isset($_POST['booking_status'])?(int)$_POST['booking_status']:0;
+            $booking->updateAll($traveller,$items);
+        } elseif (!empty($_POST)) {//add new
+            $traveller = new Traveller_model();
+            $traveller->name = isset($_POST['customer_name'])?$_POST['customer_name']:'';
+            $traveller->email = isset($_POST['customer_email'])?$_POST['customer_email']:'';
+            $traveller->phone = isset($_POST['customer_phone'])?$_POST['customer_phone']:'';
+            $traveller->address = isset($_POST['customer_address'])?$_POST['customer_address']:'';
+            $items = $this->session->userdata('booking_item');
+            $items = unserialize($items);
+            $booking = $this->session->userdata('booking');
+            $booking = unserialize($booking);
+            $booking->status = isset($_POST['booking_status'])?(int)$_POST['booking_status']:0;
+            $booking->insertAll($traveller,$items);
+            
+            
         }
 
-        redirect('admin/pages');
+        echo json_encode(array('result'=>1,
+            'data'=>array()));
     }
 }

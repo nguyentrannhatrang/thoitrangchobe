@@ -49,6 +49,7 @@ class Users extends Admin {
                 redirect('admin/users/login');
             }
         } else {
+            $this->data['not_show_menu'] = true;
             $this->load->view('admin/header', $this->data);
             $this->load->view('admin/login', $this->data);
             $this->load->view('admin/footer', $this->data);

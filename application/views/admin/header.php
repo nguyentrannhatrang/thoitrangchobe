@@ -22,29 +22,38 @@
                 <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"><i class="fa fa-bars"></i> </a>
                 <a href="#" class="nav-brand" data-toggle="fullscreen"><?php echo !empty($general->logo_text) ? $general->logo_text : 'Admin'; ?></a>
             </header>
-            <section>
-                <nav class="nav-primary hidden-xs">
-                    <ul class="nav">
-                        <li class="<?php echo in_array('dashboard', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/dashboard'); ?>"><span>Statictics</span></a></li>
-                        <li class="<?php echo in_array('general', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/general'); ?>"><span>General</span></a></li>
-                        <li class="<?php echo in_array('categories', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/categories'); ?>"><span>Categories</span></a></li>
-                        <li class="<?php echo in_array('products', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/products'); ?>"><span>Product</span></a></li>
-                        <li class="<?php echo in_array('orders', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/orders'); ?>"><span>Booking</span></a></li>
-                        <li class="<?php echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/pages'); ?>"><span>Pages</span></a></li>
-                        <li class="<?php echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/filters'); ?>"><span>Filters</span></a></li>
-                        <li class="<?php echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/comments'); ?>"><span>Comment</span></a></li>
-                        <li class="<?php echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; ?>"><a href="<?php echo site_url('admin/newsletter'); ?>"><span>Newsletter</span></a></li>
-                        <li class="confirm"><a href="<?php echo site_url('admin/users/logout'); ?>"><span>Logout</span></a></li>
-                    </ul>
-                </nav>
-
-                <div class="bg-danger wrapper hidden-vertical animated fadeInUp text-sm" style="display:none">
-                    <a href="#" data-dismiss="alert" class="pull-right m-r-n-sm m-t-n-sm">
-                        <i class="fa fa-times"></i>
-                    </a>
-                    Salut, bine ai venit in admin pentru Ansilvex.
-                </div>
-            </section>
+            <?php
+            if(!isset($not_show_menu)) {
+                ?>
+                <section>
+                    <nav class="nav-primary hidden-xs">
+                        <ul class="nav">
+                            <li class="<?php echo in_array('dashboard', $this->uri->segment_array()) ? 'active' : ''; ?>">
+                                <a href="<?php echo site_url('admin/dashboard'); ?>"><span>Statictics</span></a></li>
+                            <li class="<?php echo in_array('general', $this->uri->segment_array()) ? 'active' : ''; ?>">
+                                <a href="<?php echo site_url('admin/general'); ?>"><span>General</span></a></li>
+                            <li class="<?php echo in_array('categories', $this->uri->segment_array()) ? 'active' : ''; ?>">
+                                <a href="<?php echo site_url('admin/categories'); ?>"><span>Categories</span></a></li>
+                            <li class="<?php echo in_array('products', $this->uri->segment_array()) ? 'active' : ''; ?>">
+                                <a href="<?php echo site_url('admin/products'); ?>"><span>Product</span></a></li>
+                            <li class="<?php echo in_array('orders', $this->uri->segment_array()) ? 'active' : ''; ?>">
+                                <a href="<?php echo site_url('admin/orders'); ?>"><span>Booking</span></a></li>
+                            <li class="<?php echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; ?>"><a
+                                    href="<?php echo site_url('admin/pages'); ?>"><span>Pages</span></a></li>
+                            <!--<li class="<?php /*echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; */?>"><a
+                                    href="<?php /*echo site_url('admin/filters'); */?>"><span>Filters</span></a></li>
+                            <li class="<?php /*echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; */?>"><a
+                                    href="<?php /*echo site_url('admin/comments'); */?>"><span>Comment</span></a></li>
+                            <li class="<?php /*echo in_array('pages', $this->uri->segment_array()) ? 'active' : ''; */?>"><a
+                                    href="<?php /*echo site_url('admin/newsletter'); */?>"><span>Newsletter</span></a></li>-->
+                            <li class="confirm"><a
+                                    href="<?php echo site_url('admin/users/logout'); ?>"><span>Logout</span></a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <?php
+            }
+            ?>
         </section>
     </aside>
 
