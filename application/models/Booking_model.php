@@ -227,10 +227,23 @@ class Booking_model extends CI_Model {
         $this->db->trans_start();
         /** @var Booking_model $booking */
         $booking = $this;
-        $travellerId = $traveller->insert();
-        $booking->user_id = $travellerId;
+        // load booking item
+        $itemOld = new Booking_detail_model();
+        $itemsDb = $itemOld->get_by_booking($booking->id);
+        if(!empty($itemsDb)){
+            $productDetail = new Product_detail_model();
+            //rollback allotment
+            /** @var Booking_detail_model $_item */
+            foreach ($itemsDb as $_item){
+                $productDetailCop = clone $productDetail;
+                $productDetailCop->getObjectDetail($_item->product,$_item->color,$_item->size);
+                $productDetailCop->quantity += $_item->quantity;
+                $productDetailCop->update();
+                $_item->delete();
+            }
+        }
         $booking->updateDataFromDetail($aDetails);
-        $bkId = $booking->insert();
+        $bkId = $booking->update();
         $arrReduce = array();
         /** @var Booking_detail_model $itemDetail */
         foreach ($aDetails as $itemDetail){

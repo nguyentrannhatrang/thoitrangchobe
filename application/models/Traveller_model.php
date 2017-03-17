@@ -20,6 +20,13 @@ class Traveller_model extends CI_Model {
         return $this->db->insert_id();
     }
 
+    public function update()
+    {
+        $this->db->where(array('id'=>$this->id));
+        $update = $this->db->update($this->table, $this);
+        return (boolean)$update;
+    }
+
     public function get_by_phone($phone)
     {
         $query = $this->db->get_where($this->table, ['phone' => $phone]);
